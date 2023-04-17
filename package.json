@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/leomoreiraa/portfolio/issues"
   },
-  "homepage": "https://github.com/leomoreiraa/portfolio#readme"
+  "homepage": "https://github.com/leomoreiraa/portfolio#readme",
+  
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1"
+  }
 }
