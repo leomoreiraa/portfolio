@@ -1,26 +1,5 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "My react and tw portfolio",
-  "main": "entry: 'tailwind.config.js',",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leomoreiraa/portfolio.git"
-  },
-  "keywords": [
-    "portfolio"
-  ],
-  "author": "Leo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/leomoreiraa/portfolio/issues"
-  },
-  "homepage": "https://github.com/leomoreiraa/portfolio#readme",
-  
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1"
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
   }
 }
