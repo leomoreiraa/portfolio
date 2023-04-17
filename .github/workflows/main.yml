@@ -16,7 +16,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run --prefix myview/src
+        run: npm run dev --prefix myview/src
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.0
