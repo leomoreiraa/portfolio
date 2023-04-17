@@ -22,5 +22,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.7.0
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./myview/src/build
+          publish_dir: ./myCV/src/build
           publish_branch: gh-pages
