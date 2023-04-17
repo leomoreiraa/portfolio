@@ -1,4 +1,4 @@
-name: deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -9,16 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - name: Build web-app
-        run: |
-          npm ci
-          npm run
-      - name: Deploy to gh-pages
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run --prefix myview/src
+
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./myview/src/build
+          publish_branch: gh-pages
