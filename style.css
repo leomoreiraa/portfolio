@@ -571,3 +571,142 @@ footer {
         margin: 0;
     }
 }
+
+/* Responsividade para dispositivos entre 350px e 490px */
+@media (max-width: 490px) {
+    header {
+        background-color: #252525 !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links {
+        display: none; /* Esconde os links no mobile por padrão */
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        right: 10px;
+        top: 60px;
+        width: 180px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostra os links quando o menu está ativo */
+    }
+
+    .mobile-menu {
+        display: block; /* Mostra o botão hambúrguer no mobile */
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    nav {
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .background-spline {
+        display: none; /* Esconde o Spline Viewer em telas menores */
+    }
+
+    #home {
+        margin-top: 0; /* Remove margens extras */
+        padding: 20px; /* Adiciona espaçamento interno */
+        text-align: center; /* Centraliza o conteúdo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Garante que ocupa a altura total da tela */
+    }
+
+    .home-layout {
+        display: flex;
+        flex-direction: column; /* Reorganiza os elementos em coluna */
+        align-items: center;
+        justify-content: center;
+        gap: 1rem; /* Espaçamento entre os elementos */
+        width: 100%; /* Garante que ocupa toda a largura */
+    }
+
+    .profile-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0; /* Remove margens extras */
+    }
+
+    .profile-img {
+        width: 120px; /* Ajusta o tamanho da imagem */
+        height: 120px;
+        margin: 0 auto 20px; /* Centraliza e adiciona espaçamento inferior */
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--purple);
+        box-shadow: 0 0 20px rgba(142, 68, 173, 0.4);
+        margin-top: 100px;
+    }
+
+    .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza horizontalmente */
+        justify-content: center; /* Centraliza verticalmente */
+        text-align: center; /* Centraliza o texto */
+        margin: 0; /* Remove margens extras */
+        margin-bottom: 200px;
+    }
+
+    .text-wrapper h2 {
+        font-size: 1.5rem; /* Ajusta o tamanho da fonte */
+        margin: 10px 0; /* Adiciona espaçamento entre os elementos */
+        color: var(--purple);
+    }
+
+    .text-wrapper p {
+        font-size: 1rem; /* Ajusta o tamanho da fonte */
+        margin: 10px 0; /* Adiciona espaçamento entre o título e o parágrafo */
+    }
+
+    .tech-icons {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os ícones quebrem linha */
+        justify-content: center; /* Centraliza os ícones */
+        gap: 10px; /* Espaçamento entre os ícones */
+        margin-top: 20px; /* Adiciona espaçamento superior */
+    }
+
+    .about, .career, .projects, .contact {
+        padding: 40px 10px; /* Reduz o espaçamento interno */
+    }
+
+    .timeline {
+        padding: 10px 0; /* Reduz o espaçamento interno */
+    }
+
+    .timeline-item .timeline-content {
+        width: 100%; /* Ocupa toda a largura disponível */
+        margin: 10px 0; /* Adiciona espaçamento entre os itens */
+    }
+
+    .projects .project-grid {
+        grid-template-columns: 1fr; /* Exibe os projetos em uma única coluna */
+        gap: 20px; /* Reduz o espaçamento entre os projetos */
+    }
+
+    footer {
+        padding: 15px 0; /* Reduz o espaçamento interno */
+    }
+}

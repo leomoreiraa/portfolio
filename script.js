@@ -132,7 +132,7 @@ const translations = {
         project2Description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
         project2Link: "Ver mais",
         contactTitle: "Contato",
-        contactText: "Entre em contato pelo e-mail:",
+        contactText: 'Entre em contato pelo e-mail: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>',
         footerText: "&copy; 2025 Dev.Leo. Todos os direitos reservados."
     },
     "en-us": {
@@ -166,7 +166,7 @@ const translations = {
         project2Description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
         project2Link: "Learn more",
         contactTitle: "Contact",
-        contactText: "Contact-me via e-mail:",
+        contactText: 'Contact-me via email: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>',
         footerText: "&copy; 2025 Dev.Leo. All rights reserved."
     }
 };
@@ -186,7 +186,7 @@ function setLanguage(lang) {
     document.querySelector(".text-wrapper p").innerHTML = translations[lang].description;
     document.querySelector(".btn").innerHTML = translations[lang].viewProjects;
     document.querySelector("#about h2").innerHTML = translations[lang].aboutMe;
-    document.querySelector("#contact p").innerHTML = `${translations[lang].contactText} <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>`;
+    document.querySelector("#contact p").innerHTML = translations[lang].contactText;
 }
 
 // Adiciona eventos de clique nas bandeiras
