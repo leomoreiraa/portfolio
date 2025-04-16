@@ -453,6 +453,36 @@ footer {
     transform: scale(1.2); /* Aumenta levemente ao passar o mouse */
 }
 
+.social-links {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.social-links a {
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-light);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--purple);
+}
+
+/* Estilo para os ícones sociais */
+.social-icon {
+    font-size: 40px; /* Mesmo tamanho dos ícones de tecnologia */
+    color: var(--text-light); /* Cor consistente */
+    margin: 0 10px; /* Espaçamento entre os ícones */
+    transition: transform 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Efeito de zoom ao passar o mouse */
+    color: var(--purple); /* Cor de destaque ao passar o mouse */
+}
+
 /* RESPONSIVO */
 /* Ajustes para o modo mobile */
 @media (max-width: 768px) {

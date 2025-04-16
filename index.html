@@ -32,24 +32,21 @@
     </header>
 
     <main>
+        <!-- Seção Home -->
         <section id="home" class="hero">
-            <!-- Adicione o script do Spline -->
-            
-            <!-- Substitua o vídeo pelo viewer do Spline -->
             <spline-viewer 
                 url="https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode" 
                 class="background-spline">
             </spline-viewer>
-            
             <div class="container home-layout">
                 <div class="profile-wrapper">
                     <img src="perfil.png" alt="Sua Foto" class="profile-img" />
                 </div>
                 <div id="divider" class="line-divider"></div>
                 <div class="text-wrapper">
-                    <h2 data-key="greeting">Olá, eu sou o <span>Leo</span></h2>
+                    <h2 data-key="greeting" style="margin-left: 7px;">Olá, eu sou o <span>Leo</span></h2>
                     <p data-key="description">Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação</p>
-                    <div class="tech-icons">
+                    <div class="tech-icons" style="margin-left: 10px;">
                         <i class="fab fa-java" title="Java"></i>
                         <i class="fab fa-js-square" title="JavaScript"></i>
                         <i class="fab fa-react" title="React"></i>
@@ -59,23 +56,30 @@
                         <img src="unity-icon.png" alt="Unity" title="Unity" class="custom-icon">
                         <i class="fab fa-html5" title="HTML"></i>
                         <i class="fab fa-css3-alt" title="CSS"></i>
+                        <a href="https://www.linkedin.com/in/leomoreiraa/" target="_blank" title="LinkedIn" style="margin-left: 55px;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/leomoreiraa" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Seção Sobre Mim -->
         <section id="about" class="about fade-in">
             <div class="container">
                 <h2 data-key="aboutMe">Sobre Mim</h2>
-                <p data-key="aboutText">Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.
-
+                <p data-key="aboutText">
+                    Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.
                     Minhas principais linguagens de atuação são Java e C#, mas também leciono C++, GML, GDScript, JavaScript e Python, além de trabalhar com bibliotecas e frameworks como Pandas e React.js.
-                    
                     Sou apaixonado por Física e Programação, e meu grande objetivo é unir essas duas áreas para desenvolver soluções inovadoras no futuro. Gosto de tornar o conhecimento acessível, despertando a curiosidade e a criatividade em cada projeto e aula que realizo.
                 </p>
             </div>
         </section>
 
+        <!-- Seção Carreira -->
         <section id="career" class="career fade-in">
             <div class="container">
                 <h2 data-key="careerTitle">Carreira</h2>
@@ -86,7 +90,9 @@
                         <div class="timeline-content">
                             <h3 data-key="career1Title">Estagiário de Front-End</h3>
                             <p data-key="career1Company">T&T Soluções — Estágio não remunerado<br>Duração: 2 meses</p>
-                            <p data-key="career1Description">Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.</p>
+                            <p data-key="career1Description">
+                                Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item right">
@@ -94,7 +100,9 @@
                         <div class="timeline-content">
                             <h3 data-key="career2Title">Auxiliar Geral</h3>
                             <p data-key="career2Company">Seu Lugar Telecom<br>2023 – 2024</p>
-                            <p data-key="career2Description">Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.</p>
+                            <p data-key="career2Description">
+                                Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item left">
@@ -102,15 +110,17 @@
                         <div class="timeline-content">
                             <h3 data-key="career3Title">Instrutor de Robótica e Programação</h3>
                             <p data-key="career3Company">Ctrl+Play Limeira<br>2024 – Atual</p>
-                            <p data-key="career3Description">Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes.
-
-                                Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.</p>
+                            <p data-key="career3Description">
+                                Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes.
+                                Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Seção Projetos -->
         <section id="projects" class="projects fade-in">
             <div class="container">
                 <h2 data-key="projectsTitle">Projetos</h2>
@@ -135,16 +145,20 @@
             </div>
         </section>
 
+        <!-- Seção Contato -->
         <section id="contact" class="contact fade-in">
             <div class="container">
                 <h2 data-key="contactTitle">Contato</h2>
-                <p data-key="contactText">Entre em contato pelo e-mail: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a></p>
+                <p data-key="contactText">
+                    Entre em contato pelo e-mail: 
+                    <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>
+                </p>
             </div>
-        </section>  
+        </section>
+    </main>
+
     <footer>
         <p data-key="footerText">&copy; 2025 Dev.Leo. Todos os direitos reservados.</p>
     </footer>
-    </main>
-
 </body>
 </html>
