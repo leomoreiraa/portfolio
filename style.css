@@ -1,0 +1,582 @@
+:root {
+    --bg-dark: #252525;
+    --text-light: #c4c4c4;
+    --purple: #8e44ad;
+    --accent-dark: #3a3a3a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    color: var(--text-light);
+    height: 100vh;
+    overflow: auto;
+}
+
+body {
+    background-color: var(--bg-dark);
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--purple);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo {
+    order: 1;
+    display: block;
+}
+
+/* Menu padrão para desktop */
+.nav-links {
+    display: flex; /* Mostra os links no desktop */
+    flex-direction: row;
+    gap: 20px;
+    list-style: none;
+    margin-right: 20px;
+    background: none;
+    position: static;
+    padding: 0;
+}
+
+/* Esconde o menu hambúrguer no desktop */
+.mobile-menu {
+    display: none; /* Esconde o botão hambúrguer no desktop */
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--purple);
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.mobile-menu.open {
+    transform: rotate(90deg); /* Animação opcional para o botão */
+    transition: transform 0.3s ease;
+}
+
+header {
+    background: transparent;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+    background-color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px;
+    position: absolute; /* Posiciona os ícones no canto direito */
+    right: 20px; /* Define a distância da borda direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta o alinhamento vertical */
+}
+
+.language-switcher i {
+    font-size: 24px; /* Tamanho dos ícones */
+    color: var(--text-light);
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+}
+
+.language-switcher i:hover {
+    transform: scale(1.1);
+    color: var(--purple); /* Cor ao passar o mouse */
+}
+
+.language-switcher .flag {
+    width: 40px; /* Define o tamanho padrão */
+    height: 40px;
+    cursor: default; /* Remove o comportamento de clique */
+    transition: none; /* Remove transições */
+}
+
+.language-switcher .flag:hover {
+    transform: none; /* Remove o efeito de escala */
+    filter: none; /* Remove o filtro de cor */
+}
+
+#home {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #252525;
+}
+
+.home-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Reduzido para apenas alguns pixels */
+    flex-wrap: wrap;
+    height: 100%;
+    z-index: 1;
+    position: absolute; /* Permite centralizar os elementos */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta o ponto de referência para o centro */
+    width: 100%; /* Garante que os elementos ocupem a largura total */
+}
+
+.profile-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0; /* Remove margens desnecessárias */
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--purple);
+    box-shadow: 0 0 20px rgba(142, 68, 173, 0.4);
+    animation: morph 5s infinite;
+}
+
+.line-divider {
+    background-color: var(--text-light);
+    margin: 5px auto; /* Reduzido para apenas alguns pixels */
+}
+
+/* Modo vertical */
+.line-divider.vertical {
+    width: 2px;
+    height: 150px;
+}
+
+/* Modo horizontal */
+.line-divider.horizontal {
+    width: 100%;
+    height: 2px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left; /* Mantém o alinhamento do texto */
+    margin: 0; /* Remove margens desnecessárias */
+}
+
+.text-wrapper h2, .text-wrapper p {
+    margin: 2px 0; /* Reduzido para apenas alguns pixels */
+    line-height: 1.2; /* Ajustado para reduzir o espaçamento vertical */
+}
+
+.text-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    color: var(--purple);
+    display: inline;
+}
+
+.text-wrapper p {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    color: var(--text-light);
+    display: inline;
+}
+
+
+@keyframes morph {
+    0% { border-radius: 50% 50% 50% 50%; }
+    25% { border-radius: 60% 40% 55% 45%; }
+    50% { border-radius: 45% 55% 60% 40%; }
+    75% { border-radius: 50% 50% 45% 55%; }
+    100% { border-radius: 50% 50% 50% 50%; }
+}
+
+.about, .projects, .contact {
+    padding: 60px 0;
+    background-color: var(--bg-dark);
+}
+
+h2 {
+    color: var(--purple);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.projects .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project {
+    background: var(--accent-dark);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    transition: transform 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(142, 68, 173, 0.3);
+}
+
+.project-thumb {
+    border: 3px solid var(--purple);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.project-thumb img {
+    width: 100%;
+    display: block;
+}
+
+.project a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.career {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 60px 0;
+}
+
+.career h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--purple);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    width: 2px;
+    background-color: var(--purple);
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-item.left {
+    flex-direction: row-reverse;
+}
+
+.timeline-item.right {
+    flex-direction: row;
+}
+
+.timeline-item .timeline-content {
+    padding: 20px;
+    background-color: var(--purple);
+    border-radius: 6px;
+    width: 45%;
+    text-align: center;
+}
+
+.timeline-item .timeline-content h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.timeline-item .timeline-content p {
+    margin-top: 10px;
+    color: #fff;
+}
+
+.timeline-item.left .timeline-content {
+    margin-right: 15px;
+}
+
+.timeline-item.right .timeline-content {
+    margin-left: 15px;
+}
+
+footer {
+    background: #252525;
+    color: var(--text-light);
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.about,
+.career,
+.projects,
+.contact {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-dark); /* já está presente */
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.background-spline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10; /* Coloca o viewer atrás do conteúdo */
+    background: transparent;
+}
+
+.about, .career, .projects, .contact {
+    background-color: var(--bg-dark);
+    position: relative;
+    z-index: 2;
+    padding: 60px 0;
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tech-icons i, 
+.tech-icons img {
+    width: 40px; /* Define a largura padrão */
+    height: 40px; /* Define a altura padrão */
+    font-size: 40px; /* Ajusta o tamanho dos ícones Font Awesome */
+    color: var(--text-light); /* Cor para os ícones Font Awesome */
+    transition: transform 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.tech-icons i:hover, 
+.tech-icons img:hover {
+    transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+    color: var(--purple); /* Altera a cor ao passar o mouse */
+}
+.language-switcher .flag{
+    width: 60px;
+    height: 60px;
+}
+.tech-icons img {
+    width: 40px; /* Define o tamanho padrão */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.language-switcher .flag:hover,
+.tech-icons img:hover {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(58%) saturate(746%) hue-rotate(260deg) brightness(95%) contrast(92%);
+    transform: scale(1.2); /* Aumenta levemente ao passar o mouse */
+}
+
+.tech-icons i:hover {
+    color: var(--purple); /* Altera a cor dos ícones Font Awesome */
+    transform: scale(1.2); /* Aumenta levemente ao passar o mouse */
+}
+
+/* RESPONSIVO */
+/* Ajustes para o modo mobile */
+@media (max-width: 768px) {
+    header {
+        background-color: #252525 !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links {
+        display: none; /* Esconde os links no mobile por padrão */
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        right: 20px;
+        top: 80px;
+        width: 200px;
+        padding: 15px;
+        border-radius: 5px;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostra os links quando o menu está ativo */
+    }
+
+    .mobile-menu {
+        display: block; /* Mostra o botão hambúrguer no mobile */
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--text-light);
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    nav {
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .background-spline {
+        display: none;
+    }
+
+    #home {
+        margin-top: 80px; /* Adiciona margem para evitar sobreposição da navbar */
+        padding: 20px; /* Reduz o espaçamento interno */
+        text-align: center; /* Centraliza o conteúdo */
+    }
+
+    .home-layout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem; /* Reduz o espaçamento entre os elementos */
+        flex-wrap: wrap;
+    }
+
+    .text-wrapper {
+        text-align: center;
+        margin: 0 auto; /* Centraliza o texto */
+    }
+
+    .text-wrapper h2 {
+        font-size: 1.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .text-wrapper p {
+        font-size: 1rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .text-wrapper .btn {
+        margin: 15px auto 0; /* Ajusta o espaçamento do botão */
+    }
+
+    .profile-img {
+        width: 150px; /* Reduz o tamanho da imagem */
+        height: 150px;
+    }
+
+    #divider {
+        margin: 10px auto 0; /* Centraliza e adiciona um pequeno espaçamento superior */
+        width: 50%; /* Reduz a largura para 50% */
+    }
+
+    .profile-wrapper {
+        margin-bottom: 0; /* Remove qualquer margem inferior */
+    }
+
+    .home-layout {
+        gap: 0; /* Remove qualquer espaçamento entre os elementos */
+    }
+
+    #divider {
+        margin: 0; /* Remove qualquer margem do divider */
+        width: 75%; /* Reduz a largura para 75% */
+    }
+
+    .profile-wrapper,
+    .text-wrapper {
+        margin: 0; /* Remove margens extras */
+        padding: 0; /* Remove qualquer padding */
+    }
+
+    .home-layout {
+        gap: 0; /* Remove o espaçamento entre os elementos */
+    }
+
+    .profile-img {
+        margin-bottom: 0; /* Remove qualquer margem inferior da imagem */
+    }
+
+    .text-wrapper h2,
+    .text-wrapper p,
+    .text-wrapper .btn {
+        margin: 0; /* Remove margens dos textos e botão */
+    }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-key="title">Dev.Leo</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <nav id="nav">
+                <div class="language-switcher">
+                    <img src="brazil-flag.png" alt="Português" id="pt-br" class="flag" title="Português" />
+                    <img src="usa-flag.png" alt="English" id="en-us" class="flag" title="English" />
+                </div>
+                <div class="mobile-menu" id="menu-toggle">☰</div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#contact" data-key="contact">Contato</a></li>
+                    <li><a href="#projects" data-key="projects">Projetos</a></li>
+                    <li><a href="#career" data-key="career">Carreira</a></li>
+                    <li><a href="#about" data-key="about">Sobre</a></li>
+                    <li><a href="#home" data-key="home">Início</a></li>
+                </ul>
+            </nav>
+            <img src="logo.png" alt="Logo" class="logo" width="75" height="75">
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <!-- Adicione o script do Spline -->
+            
+            <!-- Substitua o vídeo pelo viewer do Spline -->
+            <spline-viewer 
+                url="https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode" 
+                class="background-spline">
+            </spline-viewer>
+            
+            <div class="container home-layout">
+                <div class="profile-wrapper">
+                    <img src="perfil.png" alt="Sua Foto" class="profile-img" />
+                </div>
+                <div id="divider" class="line-divider"></div>
+                <div class="text-wrapper">
+                    <h2 data-key="greeting">Olá, eu sou o <span>Leo</span></h2>
+                    <p data-key="description">Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação</p>
+                    <div class="tech-icons">
+                        <i class="fab fa-java" title="Java"></i>
+                        <i class="fab fa-js-square" title="JavaScript"></i>
+                        <i class="fab fa-react" title="React"></i>
+                        <img src="csharp-icon.png" alt="C#" title="C#" class="custom-icon">
+                        <img src="gamemaker-icon.png" alt="GameMaker" title="GameMaker" class="custom-icon">
+                        <img src="godot-icon.png" alt="Godot" title="Godot" class="custom-icon">
+                        <img src="unity-icon.png" alt="Unity" title="Unity" class="custom-icon">
+                        <i class="fab fa-html5" title="HTML"></i>
+                        <i class="fab fa-css3-alt" title="CSS"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about fade-in">
+            <div class="container">
+                <h2 data-key="aboutMe">Sobre Mim</h2>
+                <p data-key="aboutText">Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.
+
+                    Minhas principais linguagens de atuação são Java e C#, mas também leciono C++, GML, GDScript, JavaScript e Python, além de trabalhar com bibliotecas e frameworks como Pandas e React.js.
+                    
+                    Sou apaixonado por Física e Programação, e meu grande objetivo é unir essas duas áreas para desenvolver soluções inovadoras no futuro. Gosto de tornar o conhecimento acessível, despertando a curiosidade e a criatividade em cada projeto e aula que realizo.
+                </p>
+            </div>
+        </section>
+
+        <section id="career" class="career fade-in">
+            <div class="container">
+                <h2 data-key="careerTitle">Carreira</h2>
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 data-key="career1Title">Estagiário de Front-End</h3>
+                            <p data-key="career1Company">T&T Soluções — Estágio não remunerado<br>Duração: 2 meses</p>
+                            <p data-key="career1Description">Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 data-key="career2Title">Auxiliar Geral</h3>
+                            <p data-key="career2Company">Seu Lugar Telecom<br>2023 – 2024</p>
+                            <p data-key="career2Description">Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 data-key="career3Title">Instrutor de Robótica e Programação</h3>
+                            <p data-key="career3Company">Ctrl+Play Limeira<br>2024 – Atual</p>
+                            <p data-key="career3Description">Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes.
+
+                                Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects fade-in">
+            <div class="container">
+                <h2 data-key="projectsTitle">Projetos</h2>
+                <div class="project-grid">
+                    <div class="project">
+                        <div class="project-thumb">
+                            <img src="placeholder.png" alt="Projeto 1">
+                        </div>
+                        <h3 data-key="project1Title">Projeto 1</h3>
+                        <p data-key="project1Description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <a href="#" data-key="project1Link">Ver mais</a>
+                    </div>
+                    <div class="project">
+                        <div class="project-thumb">
+                            <img src="placeholder.png" alt="Projeto 2">
+                        </div>
+                        <h3 data-key="project2Title">Projeto 2</h3>
+                        <p data-key="project2Description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <a href="#" data-key="project2Link">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact fade-in">
+            <div class="container">
+                <h2 data-key="contactTitle">Contato</h2>
+                <p data-key="contactText">Entre em contato pelo e-mail: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a></p>
+            </div>
+        </section>  
+    <footer>
+        <p data-key="footerText">&copy; 2025 Dev.Leo. Todos os direitos reservados.</p>
+    </footer>
+    </main>
+
+</body>
+</html>
