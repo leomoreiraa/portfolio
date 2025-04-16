@@ -2,12 +2,6 @@
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-// Adiciona o evento de clique ao botão hambúrguer
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active"); // Alterna a classe "active" no menu
-    menuToggle.classList.toggle("open"); // Alterna a classe "open" no botão
-});
-
 // Scroll da seção home para mudar cor do header
 const header = document.querySelector("header");
 const home = document.querySelector("#home");
