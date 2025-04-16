@@ -479,10 +479,7 @@ footer {
     }
 
     .mobile-menu {
-        display: block; /* Mostra o botão hambúrguer no mobile */
-        font-size: 28px;
-        cursor: pointer;
-        color: var(--text-light);
+        display: none; /* Mostra o botão hambúrguer no mobile */
     }
 
     .header-container {
@@ -543,8 +540,7 @@ footer {
     }
 
     #divider {
-        margin: 10px auto 0; /* Centraliza e adiciona um pequeno espaçamento superior */
-        width: 50%; /* Reduz a largura para 50% */
+        display: none;
     }
 
     .profile-wrapper {
@@ -553,11 +549,6 @@ footer {
 
     .home-layout {
         gap: 0; /* Remove qualquer espaçamento entre os elementos */
-    }
-
-    #divider {
-        margin: 0; /* Remove qualquer margem do divider */
-        width: 75%; /* Reduz a largura para 75% */
     }
 
     .profile-wrapper,
@@ -571,12 +562,12 @@ footer {
     }
 
     .profile-img {
-        margin-bottom: 0; /* Remove qualquer margem inferior da imagem */
+        margin-bottom: 0;
     }
 
     .text-wrapper h2,
     .text-wrapper p,
     .text-wrapper .btn {
-        margin: 0; /* Remove margens dos textos e botão */
+        margin: 0;
     }
 }
