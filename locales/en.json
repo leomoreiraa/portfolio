@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "career": "Career",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "zh": "中文"
+  },
+  "title": "Dev.Leo",
+  "greeting": "Hello, I am <span>Leo</span>",
+  "description": "Full Stack Developer | C# & Java | Robotics and Programming Teacher",
+  "aboutMe": "About Me",
+  "aboutText": "Hello! I am Leo, 22 years old, and a student of Physics and Computer Engineering. I work as a Robotics and Programming teacher, working with diverse audiences — from children taking their first steps in technology to adults seeking to deepen their knowledge in data analysis and deep learning. My main programming languages are Java and C#, but I also teach C++, GML, GDScript, JavaScript, and Python, as well as work with libraries and frameworks like Pandas and React.js. I am passionate about Physics and Programming, and my ultimate goal is to unite these two fields to develop innovative solutions in the future. I enjoy making knowledge accessible, sparking curiosity and creativity in every project and class I undertake.",
+  "careerTitle": "Career",
+  "career1Title": "Front-End Intern",
+  "career1Company": "T&T Solutions — Unpaid Internship<br>Duration: 2 months",
+  "career1Description": "I worked on front-end development for a recruitment platform for interns, using Angular 5 and Ionic. I worked with interface prototyping in Figma, contributing to the creation of an intuitive and responsive user experience. During this period, I was able to improve my web development skills and collaborate in a work environment focused on educational and corporate solutions.",
+  "career2Title": "General Assistant",
+  "career2Company": "Seu Lugar Telecom<br>2023 – 2024",
+  "career2Description": "During my time at the company, I worked in various areas, from customer service to technical infrastructure. As the company was in its early stages, I was responsible for configuring and integrating servers, as well as developing applications for clients and performing API integrations with the platform. All development was done with a focus on efficiency and stability, using Java as the main language. This experience gave me a broad view of operations and development in technology startups.",
+  "career3Title": "Robotics and Programming Instructor",
+  "career3Company": "Ctrl+Play Limeira<br>2024 – Present",
+  "career3Description": "I work as a Robotics and Programming teacher, teaching students of different ages, from children to adults. The classes are adapted according to the level and age group, ranging from an introduction to logic and programming for younger students to game development with GameMaker, Godot, and Unity for pre-teens. With teenagers, the focus is on web development with React.js and programming in Python, while adult students learn data analysis and introductory artificial intelligence concepts using tools like Pandas and PyTorch. This experience has allowed me to explore different teaching approaches and closely follow the technical evolution of my students.",
+  "projectsTitle": "Projects",
+  "project1Title": "Project 1",
+  "project1Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  "project1Link": "Learn more",
+  "project2Title": "Project 2",
+  "project2Description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+  "project2Link": "Learn more",
+  "contactTitle": "Contact",
+  "contactText": "Contact me via email: <a href=\"mailto:leonardo.moreira6854@gmail.com\">leonardo.moreira6854@gmail.com</a>",
+  "footerText": "&copy; 2025 Dev.Leo. All rights reserved.",
+  "accessibility": {
+    "skipToContent": "Skip to content",
+    "darkMode": "Switch to dark mode",
+    "lightMode": "Switch to light mode",
+    "menuToggle": "Open menu"
+  }
+}

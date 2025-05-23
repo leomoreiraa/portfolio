@@ -1,146 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfólio de Leonardo Moreira - Desenvolvedor Full Stack e Professor de Robótica e Programação" />
-    <title data-key="title">Dev.Leo</title>
-    <link rel="icon" href="logo.png" type="image/png" />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev.Leo | Portfólio</title>
+    <meta name="description" content="Portfólio de Leonardo Moreira - Desenvolvedor Full Stack e Professor de Robótica e Programação">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/adjustments.css">
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script defer src="script.js"></script>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <!-- Skip to content (acessibilidade) -->
+    <a href="#main" class="skip-to-content" data-i18n="accessibility.skipToContent">Pular para o conteúdo</a>
     
-    <header id="header" role="banner">
+    <!-- Header -->
+    <header>
         <div class="container header-container">
-            <a href="#home" class="logo-link" aria-label="Início">
-                <img src="logo.png" alt="Logo Dev.Leo" class="logo" width="50" height="50">
+            <button class="mobile-menu" aria-expanded="false" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo">
+                <span>Dev.Leo</span>
             </a>
             
-            <nav id="nav" role="navigation" aria-label="Menu principal">
-                <button class="mobile-menu" id="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home" data-key="home" aria-current="page">Início</a></li>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" data-key="home">Início</a></li>
                     <li><a href="#about" data-key="about">Sobre</a></li>
                     <li><a href="#career" data-key="career">Carreira</a></li>
                     <li><a href="#projects" data-key="projects">Projetos</a></li>
                     <li><a href="#contact" data-key="contact">Contato</a></li>
                 </ul>
                 
-                <div class="language-switcher" role="region" aria-label="Seletor de idioma">
-                    <button id="pt-br" class="language-btn" aria-pressed="true" aria-label="Português">
-                        PT
+                <div class="language-selector">
+                    <button data-lang="pt" aria-current="true" title="Português">
+                        <img src="assets/images/brazil-flag-round.png" alt="Português" class="round-flag">
                     </button>
-                    <button id="en-us" class="language-btn" aria-pressed="false" aria-label="English">
-                        EN
+                    <button data-lang="en" aria-current="false" title="English">
+                        <img src="assets/images/usa-flag-round.png" alt="English" class="round-flag">
+                    </button>
+                    <button data-lang="zh" aria-current="false" title="中文">
+                        <img src="assets/images/china-flag.png" alt="中文" class="round-flag">
                     </button>
                 </div>
+                
+                <button class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
+                    <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
+                </button>
             </nav>
         </div>
     </header>
-
-    <main id="main-content">
-        <!-- Seção Home -->
-        <section id="home" class="hero" aria-labelledby="greeting">
-            <spline-viewer 
-                url="https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode" 
-                class="background-spline"
-                aria-hidden="true">
-            </spline-viewer>
-            <div class="container home-layout">
-                <div class="profile-wrapper">
-                    <img src="perfil.png" alt="Foto de Leonardo Moreira" class="profile-img" />
-                </div>
-                <div class="text-wrapper">
-                    <h1 id="greeting" data-key="greeting">Olá, eu sou o <span>Leo</span></h1>
-                    <p data-key="description">Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação</p>
-                    <div class="tech-icons" aria-label="Tecnologias">
-                        <i class="fab fa-java" title="Java" aria-label="Java"></i>
-                        <i class="fab fa-js-square" title="JavaScript" aria-label="JavaScript"></i>
-                        <i class="fab fa-react" title="React" aria-label="React"></i>
-                        <img src="csharp-icon.png" alt="C#" title="C#" class="custom-icon" aria-label="C#">
-                        <img src="gamemaker-icon.png" alt="GameMaker" title="GameMaker" class="custom-icon" aria-label="GameMaker">
-                        <img src="godot-icon.png" alt="Godot" title="Godot" class="custom-icon" aria-label="Godot">
-                        <img src="unity-icon.png" alt="Unity" title="Unity" class="custom-icon" aria-label="Unity">
-                        <i class="fab fa-html5" title="HTML" aria-label="HTML"></i>
-                        <i class="fab fa-css3-alt" title="CSS" aria-label="CSS"></i>
-                    </div>
-                    <div class="social-links" aria-label="Redes sociais">
-                        <a href="https://www.linkedin.com/in/leomoreiraa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/leomoreiraa" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
+    
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div id="spline-container" class="spline-container">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
+                <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode"></spline-viewer>
             </div>
             
-            <div class="scroll-indicator">
-                <p>Role para baixo</p>
-                <div class="scroll-arrow">
-                    <i class="fas fa-chevron-down"></i>
+            <div class="container">
+                <div class="home-layout">
+                    <div class="profile-wrapper animated-border">
+                        <img src="assets/images/perfil.png" alt="Sua Foto" class="profile-img" />
+                    </div>
+                    
+                    <div class="text-wrapper">
+                        <h1 class="hero-title" data-key="greeting">Olá, eu sou o <span>Leo</span></h1>
+                        <p class="hero-description" data-key="description">Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação</p>
+                        
+                        <div class="tech-icons stagger-container">
+                            <div class="tech-icon stagger-item">
+                                <i class="fab fa-java" aria-hidden="true"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="tech-icon stagger-item">
+                                <i class="fab fa-js-square" aria-hidden="true"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-icon stagger-item">
+                                <i class="fab fa-react" aria-hidden="true"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="tech-icon stagger-item">
+                                <i class="fab fa-html5" aria-hidden="true"></i>
+                                <span>HTML</span>
+                            </div>
+                            <div class="tech-icon stagger-item">
+                                <i class="fab fa-css3-alt" aria-hidden="true"></i>
+                                <span>CSS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">
+                                <i class="fas fa-code" aria-hidden="true"></i>
+                                <span data-key="project1Link">Ver Projetos</span>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span data-key="contactTitle">Entre em Contato</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Seção Sobre Mim -->
-        <section id="about" class="about fade-in" aria-labelledby="about-title">
+        
+        <!-- About Section -->
+        <section id="about" class="section about">
             <div class="container">
-                <h2 id="about-title" data-key="aboutMe">Sobre Mim</h2>
-                <p data-key="aboutText">
-                    Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.
-                </p>
-                <p>
-                    Minhas principais linguagens de atuação são Java e C#, mas também leciono C++, GML, GDScript, JavaScript e Python, além de trabalhar com bibliotecas e frameworks como Pandas e React.js.
-                </p>
-                <p>
-                    Sou apaixonado por Física e Programação, e meu grande objetivo é unir essas duas áreas para desenvolver soluções inovadoras no futuro. Gosto de tornar o conhecimento acessível, despertando a curiosidade e a criatividade em cada projeto e aula que realizo.
-                </p>
+                <h2 class="section-title fade-in" data-key="aboutMe">Sobre Mim</h2>
+                
+                <div class="fade-in">
+                    <p data-key="aboutText">
+                        Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.
+                        Minhas principais linguagens de atuação são Java e C#, mas também leciono C++, GML, GDScript, JavaScript e Python, além de trabalhar com bibliotecas e frameworks como Pandas e React.js.
+                        Sou apaixonado por Física e Programação, e meu grande objetivo é unir essas duas áreas para desenvolver soluções inovadoras no futuro. Gosto de tornar o conhecimento acessível, despertando a curiosidade e a criatividade em cada projeto e aula que realizo.
+                    </p>
+                </div>
             </div>
         </section>
-
-        <!-- Seção Carreira -->
-        <section id="career" class="career fade-in" aria-labelledby="career-title">
+        
+        <!-- Career Section -->
+        <section id="career" class="section">
             <div class="container">
-                <h2 id="career-title" data-key="careerTitle">Carreira</h2>
-                <div class="timeline" role="list">
-                    <div class="timeline-line" aria-hidden="true"></div>
+                <h2 class="section-title fade-in" data-key="careerTitle">Carreira</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-line"></div>
                     
-                    <div class="timeline-item left" role="listitem">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
+                    <!-- INVERTIDO: 3, 2, 1 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content fade-in-right">
+                            <div class="timeline-date" data-key="career1Company">T&T Soluções — Estágio não remunerado<br>Duração: 2 meses</div>
                             <h3 data-key="career1Title">Estagiário de Front-End</h3>
-                            <p data-key="career1Company">T&T Soluções — Estágio não remunerado<br>Duração: 2 meses</p>
                             <p data-key="career1Description">
                                 Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.
                             </p>
                         </div>
                     </div>
                     
-                    <div class="timeline-item right" role="listitem">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content fade-in-left">
+                            <div class="timeline-date" data-key="career2Company">Seu Lugar Telecom<br>2023 – 2024</div>
                             <h3 data-key="career2Title">Auxiliar Geral</h3>
-                            <p data-key="career2Company">Seu Lugar Telecom<br>2023 – 2024</p>
                             <p data-key="career2Description">
                                 Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.
                             </p>
                         </div>
                     </div>
                     
-                    <div class="timeline-item left" role="listitem">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content fade-in-right">
+                            <div class="timeline-date" data-key="career3Company">Ctrl+Play Limeira<br>2024 – Atual</div>
                             <h3 data-key="career3Title">Instrutor de Robótica e Programação</h3>
-                            <p data-key="career3Company">Ctrl+Play Limeira<br>2024 – Atual</p>
                             <p data-key="career3Description">
                                 Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes.
                                 Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.
@@ -150,75 +176,91 @@
                 </div>
             </div>
         </section>
-
-        <!-- Seção Projetos -->
-        <section id="projects" class="projects fade-in" aria-labelledby="projects-title">
+        
+        <!-- Projects Section -->
+        <section id="projects" class="section">
             <div class="container">
-                <h2 id="projects-title" data-key="projectsTitle">Projetos</h2>
+                <h2 class="section-title fade-in" data-key="projectsTitle">Projetos</h2>
+                
                 <div class="project-grid">
-                    <article class="project">
+                    <div class="project fade-in">
                         <div class="project-thumb">
-                            <img src="placeholder.png" alt="Imagem do Projeto 1" loading="lazy">
+                            <img src="assets/images/placeholder.png" alt="Projeto 1">
                         </div>
-                        <div class="project-content">
-                            <h3 data-key="project1Title">Projeto 1</h3>
-                            <p data-key="project1Description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <a href="#" data-key="project1Link" class="btn btn-outline">Ver mais</a>
-                        </div>
-                    </article>
+                        <h3 data-key="project1Title">Projeto 1</h3>
+                        <p data-key="project1Description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <a href="#" data-key="project1Link">Ver mais</a>
+                    </div>
                     
-                    <article class="project">
+                    <div class="project fade-in">
                         <div class="project-thumb">
-                            <img src="placeholder.png" alt="Imagem do Projeto 2" loading="lazy">
+                            <img src="assets/images/placeholder.png" alt="Projeto 2">
                         </div>
-                        <div class="project-content">
-                            <h3 data-key="project2Title">Projeto 2</h3>
-                            <p data-key="project2Description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <a href="#" data-key="project2Link" class="btn btn-outline">Ver mais</a>
-                        </div>
-                    </article>
+                        <h3 data-key="project2Title">Projeto 2</h3>
+                        <p data-key="project2Description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <a href="#" data-key="project2Link">Ver mais</a>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Seção Contato -->
-        <section id="contact" class="contact fade-in" aria-labelledby="contact-title">
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section">
             <div class="container">
-                <h2 id="contact-title" data-key="contactTitle">Contato</h2>
-                <p data-key="contactText">
-                    Entre em contato pelo e-mail: 
-                    <a href="mailto:leonardo.moreira6854@gmail.com" aria-label="Enviar email para leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>
-                </p>
-                <form class="contact-form" action="#" method="POST" aria-label="Formulário de contato">
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" id="name" name="name" required aria-required="true">
+                <h2 class="section-title fade-in" data-key="contactTitle">Contato</h2>
+                
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required aria-required="true">
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/leomoreiraa/" target="_blank" rel="noopener noreferrer">linkedin.com/in/leomoreiraa</a>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/leomoreiraa" target="_blank" rel="noopener noreferrer">github.com/leomoreiraa</a>
                     </div>
-                    <button type="submit" class="btn">Enviar mensagem</button>
-                </form>
+                </div>
             </div>
         </section>
     </main>
-
-    <footer role="contentinfo">
+    
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <p data-key="footerText">&copy; 2025 Dev.Leo. Todos os direitos reservados.</p>
-            <div class="footer-links">
-                <a href="#home">Início</a>
-                <a href="#about">Sobre</a>
-                <a href="#career">Carreira</a>
-                <a href="#projects">Projetos</a>
-                <a href="#contact">Contato</a>
+            <div class="footer-content">
+                <div class="footer-logo">Dev.Leo</div>
+                
+                <div class="footer-links">
+                    <a href="#home" data-key="home">Início</a>
+                    <a href="#about" data-key="about">Sobre</a>
+                    <a href="#career" data-key="career">Carreira</a>
+                    <a href="#projects" data-key="projects">Projetos</a>
+                    <a href="#contact" data-key="contact">Contato</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/leomoreiraa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/leomoreiraa" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
+            
+            <div class="copyright" data-key="footerText">&copy; 2025 Dev.Leo. Todos os direitos reservados.</div>
         </div>
     </footer>
+    
+    <!-- Scripts -->
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

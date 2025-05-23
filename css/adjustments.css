@@ -1,0 +1,86 @@
+/* 
+ * Estilos adicionais para o portfólio
+ * Ajustes para o iframe Spline e ícones de idioma
+ */
+
+/* Ajustes para o container do Spline */
+.spline-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Garantir que o iframe do Spline ocupe todo o espaço disponível */
+#spline-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permite clicar através do iframe */
+}
+
+/* Efeito de sobreposição para as seções seguintes */
+.section {
+  position: relative;
+  z-index: 2;
+  background-color: var(--bg-primary);
+}
+
+/* Adicionar sombra sutil na parte superior das seções para melhorar o efeito de sobreposição */
+.section:not(.hero) {
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para a seção about ser a primeira a sobrepor o hero */
+.about {
+  margin-top: -2rem;
+  padding-top: 8rem;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+/* Ocultar Spline em dispositivos móveis */
+@media (max-width: 768px) {
+  .spline-container {
+    display: none;
+  }
+  
+  /* Remover margem negativa em mobile para evitar problemas de layout */
+  .about {
+    margin-top: 0;
+    padding-top: 6rem;
+    border-radius: 0;
+  }
+}
+
+/* Estilização para bandeiras redondas */
+.round-flag {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-selector button:hover .round-flag {
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para botão de idioma ativo */
+.language-selector button[aria-current="true"] .round-flag {
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* Ajustes para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .spline-container {
+    display: none;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "career": "Carreira",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "zh": "中文"
+  },
+  "title": "Dev.Leo",
+  "greeting": "Olá, eu sou o <span>Leo</span>",
+  "description": "Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação",
+  "aboutMe": "Sobre Mim",
+  "aboutText": "Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning. Minhas principais linguagens de atuação são Java e C#, mas também leciono C++, GML, GDScript, JavaScript e Python, além de trabalhar com bibliotecas e frameworks como Pandas e React.js. Sou apaixonado por Física e Programação, e meu grande objetivo é unir essas duas áreas para desenvolver soluções inovadoras no futuro. Gosto de tornar o conhecimento acessível, despertando a curiosidade e a criatividade em cada projeto e aula que realizo.",
+  "careerTitle": "Carreira",
+  "career1Title": "Estagiário de Front-End",
+  "career1Company": "T&T Soluções — Estágio não remunerado<br>Duração: 2 meses",
+  "career1Description": "Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.",
+  "career2Title": "Auxiliar Geral",
+  "career2Company": "Seu Lugar Telecom<br>2023 – 2024",
+  "career2Description": "Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.",
+  "career3Title": "Instrutor de Robótica e Programação",
+  "career3Company": "Ctrl+Play Limeira<br>2024 – Atual",
+  "career3Description": "Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes. Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.",
+  "projectsTitle": "Projetos",
+  "project1Title": "Projeto 1",
+  "project1Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  "project1Link": "Ver mais",
+  "project2Title": "Projeto 2",
+  "project2Description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+  "project2Link": "Ver mais",
+  "contactTitle": "Contato",
+  "contactText": "Entre em contato pelo e-mail: <a href=\"mailto:leonardo.moreira6854@gmail.com\">leonardo.moreira6854@gmail.com</a>",
+  "footerText": "&copy; 2025 Dev.Leo. Todos os direitos reservados.",
+  "accessibility": {
+    "skipToContent": "Pular para o conteúdo",
+    "darkMode": "Alternar para modo escuro",
+    "lightMode": "Alternar para modo claro",
+    "menuToggle": "Abrir menu"
+  }
+}
