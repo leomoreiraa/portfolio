@@ -327,80 +327,6 @@ function setupReducedMotion() {
     prefersReducedMotion.addEventListener('change', handleReducedMotion);
 }
 
-// Traduções
-const translations = {
-    "pt-br": {
-        title: "Dev.Leo",
-        menuToggle: "☰",
-        home: "Início",
-        about: "Sobre",
-        career: "Carreira",
-        projects: "Projetos",
-        contact: "Contato",
-        greeting: "Olá, eu sou o <span>Leo</span>",
-        description: "Desenvolvedor Full Stack | C# & Java | Professor de robótica e programação",
-        viewProjects: "Ver Projetos",
-        aboutMe: "Sobre Mim",
-        aboutText: "Olá! Sou o Leo, tenho 22 anos e sou estudante de Física e Engenharia da Computação. Atuo como professor de Robótica e Programação, trabalhando com públicos diversos — desde crianças que estão dando os primeiros passos na tecnologia até adultos que buscam se aprofundar em análise de dados e deep learning.",
-        careerTitle: "Minha Trajetória Profissional",
-        career1Title: "Estagiário de Front-End",
-        career1Company: "T&T Soluções — Estágio não remunerado<br>Duração: 2 meses",
-        career1Description: "Atuei no desenvolvimento front-end de uma plataforma de recrutamento de estagiários, utilizando Angular 5 e Ionic. Trabalhei com prototipagem de interfaces no Figma, contribuindo para a criação de uma experiência intuitiva e responsiva para os usuários. Durante esse período, pude aprimorar minhas habilidades em desenvolvimento web e colaborar em um ambiente de trabalho voltado para soluções educacionais e corporativas.",
-        career2Title: "Auxiliar Geral",
-        career2Company: "Seu Lugar Telecom<br>2023 – 2024",
-        career2Description: "Durante meu tempo na empresa, atuei em diversas frentes, desde o atendimento ao cliente até a infraestrutura técnica. Como a empresa estava em fase inicial, fui responsável por configurar e integrar os servidores, além de desenvolver aplicações para os clientes e realizar integrações de APIs com a plataforma. Todo o desenvolvimento foi feito com foco em eficiência e estabilidade, utilizando Java como linguagem principal. Essa experiência me proporcionou uma visão ampla de operação e desenvolvimento em startups de tecnologia.",
-        career3Title: "Instrutor de Robótica e Programação",
-        career3Company: "Ctrl+Play Limeira<br>2024 – Atual",
-        career3Description: "Atuo como professor de Robótica e Programação, lecionando para alunos de diferentes idades, desde crianças até adultos. As aulas são adaptadas conforme o nível e faixa etária, abrangendo desde introdução à lógica e programação para os mais novos, até desenvolvimento de jogos com GameMaker, Godot e Unity para pré-adolescentes. Com os adolescentes, o foco é o desenvolvimento web com React.js e programação em Python, enquanto os alunos adultos aprendem análise de dados e conceitos iniciais de inteligência artificial, utilizando ferramentas como Pandas e PyTorch. A experiência tem me permitido explorar diferentes abordagens de ensino e acompanhar de perto a evolução técnica dos alunos.",
-        projectsTitle: "Projetos em Destaque",
-        project1Title: "Sistema de Gestão Educacional",
-        project1Description: "Plataforma completa para gerenciamento de cursos, alunos e professores, com dashboard interativo e relatórios personalizados.",
-        project1Link: "Ver detalhes",
-        project2Title: "App de Monitoramento Ambiental",
-        project2Description: "Aplicativo móvel que integra sensores IoT para monitoramento de qualidade do ar e água em tempo real.",
-        project2Link: "Ver detalhes",
-        contactTitle: "Vamos Conversar",
-        contactText: 'Entre em contato pelo e-mail: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>',
-        footerText: "&copy; 2025 Dev.Leo. Todos os direitos reservados.",
-        scrollText: "Role para baixo"
-    },
-    "en-us": {
-        title: "Dev.Leo",
-        menuToggle: "☰",
-        home: "Home",
-        about: "About",
-        career: "Career",
-        projects: "Projects",
-        contact: "Contact",
-        greeting: "Hello, I am <span>Leo</span>",
-        description: "Full Stack Developer | C# & Java | Robotics and Programming Teacher",
-        viewProjects: "View Projects",
-        aboutMe: "About Me",
-        aboutText: "Hello! I am Leo, 22 years old, and a student of Physics and Computer Engineering. I work as a Robotics and Programming teacher, working with diverse audiences — from children taking their first steps in technology to adults seeking to deepen their knowledge in data analysis and deep learning.",
-        careerTitle: "My Professional Journey",
-        career1Title: "Front-End Intern",
-        career1Company: "T&T Solutions — Unpaid Internship<br>Duration: 2 months",
-        career1Description: "I worked on front-end development for a recruitment platform for interns, using Angular 5 and Ionic. I worked with interface prototyping in Figma, contributing to the creation of an intuitive and responsive user experience. During this period, I was able to improve my web development skills and collaborate in a work environment focused on educational and corporate solutions.",
-        career2Title: "General Assistant",
-        career2Company: "Seu Lugar Telecom<br>2023 – 2024",
-        career2Description: "During my time at the company, I worked in various areas, from customer service to technical infrastructure. As the company was in its early stages, I was responsible for configuring and integrating servers, as well as developing applications for clients and performing API integrations with the platform. All development was done with a focus on efficiency and stability, using Java as the main language. This experience gave me a broad view of operations and development in technology startups.",
-        career3Title: "Robotics and Programming Instructor",
-        career3Company: "Ctrl+Play Limeira<br>2024 – Present",
-        career3Description: "I work as a Robotics and Programming teacher, teaching students of different ages, from children to adults. The classes are adapted according to the level and age group, ranging from an introduction to logic and programming for younger students to game development with GameMaker, Godot, and Unity for pre-teens. With teenagers, the focus is on web development with React.js and programming in Python, while adult students learn data analysis and introductory artificial intelligence concepts using tools like Pandas and PyTorch. This experience has allowed me to explore different teaching approaches and closely follow the technical evolution of my students.",
-        projectsTitle: "Featured Projects",
-        project1Title: "Educational Management System",
-        project1Description: "Complete platform for managing courses, students, and teachers, with interactive dashboard and customized reports.",
-        project1Link: "View details",
-        project2Title: "Environmental Monitoring App",
-        project2Description: "Mobile application that integrates IoT sensors for real-time air and water quality monitoring.",
-        project2Link: "View details",
-        contactTitle: "Let's Talk",
-        contactText: 'Contact me via email: <a href="mailto:leonardo.moreira6854@gmail.com">leonardo.moreira6854@gmail.com</a>',
-        footerText: "&copy; 2025 Dev.Leo. All rights reserved.",
-        scrollText: "Scroll down"
-    }
-};
-
 // Função para alterar o idioma
 function setLanguage(lang) {
     document.querySelectorAll("[data-key]").forEach((element) => {
@@ -476,4 +402,23 @@ document.addEventListener("DOMContentLoaded", () => {
 // Adicionar classe para animações quando a página estiver totalmente carregada
 window.addEventListener('load', () => {
     document.body.classList.add('page-loaded');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.see-more-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const desc = link.closest('.project-desc');
+            const full = desc.querySelector('.project-desc-full');
+            const short = desc.querySelector('[data-key="project1Description"]');
+            if (full.style.display === 'none' || !full.style.display) {
+                full.style.display = 'inline';
+                link.textContent = link.dataset.less || 'Ver menos';
+                short.insertAdjacentText('beforeend', ' ');
+            } else {
+                full.style.display = 'none';
+                link.textContent = link.dataset.more || 'Ver mais';
+            }
+        });
+    });
 });
