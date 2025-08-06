@@ -64,14 +64,70 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div id="spline-container" class="spline-container">
-                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
-                <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode"></spline-viewer>
+                <!-- Spline 3D otimizado: carrega apenas após o DOM pronto -->
+                <div id="spline-bg-fallback" style="position:absolute;top:0;left:0;width:100%;height:100%;background:#000;z-index:-2;"></div>
+                <div id="spline-bg-loader" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:-1;">
+                  <span style="color:white;font-size:1.2rem;">Carregando animação 3D...</span>
+                </div>
+                <div id="spline-bg"></div>
+                <script type="module">
+                  window.addEventListener('DOMContentLoaded',function(){
+                    const bgDiv = document.getElementById('spline-bg');
+                    const loader = document.getElementById('spline-bg-loader');
+                    let viewer = null;
+                    let splineLoaded = false;
+                    function loadSpline() {
+                      if (splineLoaded) return;
+                      splineLoaded = true;
+                      import('https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js').then(()=>{
+                        viewer = document.createElement('spline-viewer');
+                        viewer.setAttribute('url','https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode');
+                        viewer.setAttribute('loading-anim-type','spinner-small-dark');
+                        viewer.style.position = 'absolute';
+                        viewer.style.top = 0;
+                        viewer.style.left = 0;
+                        viewer.style.width = '100%';
+                        viewer.style.height = '100%';
+                        viewer.style.zIndex = '-1';
+                        bgDiv.appendChild(viewer);
+                        loader.style.display = 'none';
+                      }).catch(()=>{
+                        loader.innerHTML = '<span style="color:white;font-size:1.2rem;">Falha ao carregar animação 3D.</span>';
+                      });
+                    }
+                    function unloadSpline() {
+                      if (viewer && viewer.parentNode) {
+                        viewer.parentNode.removeChild(viewer);
+                        loader.style.display = '';
+                        splineLoaded = false;
+                        viewer = null;
+                      }
+                    }
+                    // IntersectionObserver para pausar o Spline quando #home não está visível
+                    const homeSection = document.getElementById('home');
+                    if (homeSection) {
+                      const observer = new IntersectionObserver((entries)=>{
+                        entries.forEach(entry=>{
+                          if (entry.isIntersecting) {
+                            loadSpline();
+                          } else {
+                            unloadSpline();
+                          }
+                        });
+                      },{threshold:0.1});
+                      observer.observe(homeSection);
+                    } else {
+                      // fallback: carrega normalmente
+                      loadSpline();
+                    }
+                  });
+                </script>
             </div>
             
             <div class="container">
                 <div class="home-layout">
                     <div class="profile-wrapper animated-border">
-                        <img src="assets/images/perfil.png" alt="Sua Foto" class="profile-img" />
+                        <img src="assets/images/perfil.png" alt="Sua Foto" class="profile-img" loading="lazy" />
                     </div>
                     
                     <div class="text-wrapper">
@@ -186,18 +242,18 @@
                     <!-- Projeto 1 -->
                     <div class="project fade-in">
                         <div class="project-thumb">
-                            <img src="assets/images/Project1.png" alt="Projeto 1">
+                            <img src="assets/images/Project1.png" alt="Projeto 1" loading="lazy">
                         </div>
                         <h3 data-key="project1Title">Projeto 1</h3>
                         <p class="project-desc" data-key="project1Description">
                             Minima Studio é uma landing page para um estúdio fictício de design visual, focada em branding e interfaces digitais. A plataforma oferece uma experiência moderna e sofisticada, com navegação fluida, design responsivo e elementos que destacam a identidade minimalista da marca.
                         </p>
                         <div class="project-buttons" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                            <a href="https://landing-page-minimalista.vercel.app/" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <a href="https://landing-page-minimalista.vercel.app/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
                                 <i class="fas fa-eye" aria-hidden="true"></i>
                                 <span data-key="deploy">Deploy</span>
                             </a>
-                            <a href="https://github.com/leomoreiraa/landing-page-minimalista" target="_blank" class="btn btn-secondary" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <a href="https://github.com/leomoreiraa/landing-page-minimalista" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
                                 <i class="fab fa-github" aria-hidden="true"></i>
                                 <span data-key="github">GitHub</span>
                             </a>
@@ -207,18 +263,18 @@
                     <!-- Projeto 2 -->
                     <div class="project fade-in">
                         <div class="project-thumb">
-                            <img src="assets/images/Project2.png" alt="Projeto 2">
+                            <img src="assets/images/Project2.png" alt="Projeto 2" loading="lazy">
                         </div>
                         <h3 data-key="project2Title">Projeto 2</h3>
                         <p class="project-desc" data-key="project2Description">
                             DevLoop é uma plataforma web de mentoria para desenvolvedores, conectando mentees e mentores de tecnologia em um ambiente moderno e intuitivo. Permite agendamento de sessões, gerenciamento de disponibilidade, avaliações, chat e acompanhamento de progresso, facilitando o crescimento profissional e a troca de conhecimento na área de desenvolvimento de software.
                         </p>
                         <div class="project-buttons" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                            <a href="https://leomoreiraa.github.io/DevLoop/" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem; pointer-events: none; opacity: 0.6;" tabindex="-1" aria-disabled="true">
+                            <a href="https://leomoreiraa.github.io/DevLoop/" target="_blank" class="btn btn-primary" rel="noopener noreferrer" tabindex="-1" aria-disabled="true" style="pointer-events: none; opacity: 0.6;">
                                 <i class="fas fa-eye" aria-hidden="true"></i>
                                 <span data-key="deploy">Deploy</span>
                             </a>
-                            <a href="https://github.com/leomoreiraa/DevLoop" target="_blank" class="btn btn-secondary" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <a href="https://github.com/leomoreiraa/DevLoop" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
                                 <i class="fab fa-github" aria-hidden="true"></i>
                                 <span data-key="github">GitHub</span>
                             </a>
@@ -282,9 +338,10 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="js/theme-switcher.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Scripts otimizados: adiados para o final do carregamento -->
+    <script src="js/theme-switcher.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

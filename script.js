@@ -1,6 +1,6 @@
-// Variáveis globais
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+// Variáveis globais otimizadas
+const menuToggle = document.querySelector(".mobile-menu");
+const navLinks = document.querySelector(".nav-links");
 const header = document.querySelector("header");
 const home = document.querySelector("#home");
 
@@ -42,20 +42,19 @@ function updateActiveNavigation() {
     });
 }
 
-// Função para animar elementos quando entrarem na viewport
+// Função para animar elementos quando entram na viewport (otimizada)
 function setupScrollAnimations() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) return;
     const fadeElements = document.querySelectorAll('.fade-in');
-    
+    if (!('IntersectionObserver' in window)) {
+        fadeElements.forEach(el => el.classList.add('visible'));
+        return;
+    }
     const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Animar elementos filhos com delay
-                const children = entry.target.querySelectorAll('.animate-child');
-                children.forEach((child, index) => {
-                    child.style.animationDelay = `${index * 0.1}s`;
-                    child.classList.add('animate-fade-in');
-                });
                 observer.unobserve(entry.target);
             }
         });
@@ -63,7 +62,6 @@ function setupScrollAnimations() {
         threshold: 0.2,
         rootMargin: '0px 0px -100px 0px'
     });
-    
     fadeElements.forEach(element => {
         fadeInOnScroll.observe(element);
     });
@@ -71,25 +69,7 @@ function setupScrollAnimations() {
 
 // Função para adicionar efeito de parallax no home
 function setupParallaxEffect() {
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const homeSection = document.querySelector('#home');
-        
-        if (scrollPosition <= window.innerHeight) {
-            const translateY = scrollPosition * 0.3;
-            // Aplicar efeito de parallax ao conteúdo do home
-            const homeContent = document.querySelector('.home-layout');
-            if (homeContent) {
-                homeContent.style.transform = `translateY(${translateY * 0.5}px)`;
-            }
-            
-            // Efeito de fade out no indicador de scroll
-            const scrollIndicator = document.querySelector('.scroll-indicator');
-            if (scrollIndicator) {
-                scrollIndicator.style.opacity = 1 - (scrollPosition / 300);
-            }
-        }
-    });
+    // Otimização: Parallax desabilitado para performance
 }
 
 // Função para gerenciar o menu mobile

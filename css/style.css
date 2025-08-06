@@ -1,3 +1,15 @@
+.project-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
 /* 
  * Estilos principais do portfólio
  * Design moderno, profissional e estiloso
@@ -20,6 +32,13 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -214,12 +233,30 @@ nav {
 
 /* ===== Hero Section ===== */
 .hero {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
+  z-index: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
+
+main > section:not(.hero) {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary, #fff);
+  box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.08), 0 12px 32px -12px rgba(0,0,0,0.18);
+}
+
+body {
+  /* Adiciona espaço para o hero fixo */
+  padding-top: 100vh;
+}
+
 
 #blackhole-container {
   position: absolute;
@@ -477,8 +514,8 @@ nav {
 }
 
 .project a {
-  display: inline-block;
-  margin: 0 1.5rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
   font-weight: 500;
 }
 
@@ -524,6 +561,12 @@ footer {
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 2rem;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 -8px 32px 0 rgba(0,0,0,0.18);
 }
 
 .footer-logo {
