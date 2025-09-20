@@ -45,22 +45,6 @@ footer {
   overflow-x: hidden;
 }
 
-/* Acessibilidade - Skip to content */
-.skip-to-content {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--accent-color);
-  color: white;
-  padding: 8px 16px;
-  z-index: 1000;
-  transition: top 0.3s;
-}
-
-.skip-to-content:focus {
-  top: 0;
-}
-
 /* Container */
 .container {
   width: 100%;
@@ -115,6 +99,23 @@ a {
 
 a:hover {
   color: var(--accent-light);
+}
+
+/* Acessibilidade: foco visível consistente */
+*:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduzir animações para usuários com prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item, .fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Animação SVG mantida (SMIL); poderia ser pausada removendo o elemento <animate> dinamicamente via JS se necessário */
 }
 
 /* ===== Header ===== */
@@ -297,17 +298,93 @@ body {
   flex-wrap: wrap;
 }
 
-.profile-wrapper {
+ .profile-wrapper {
   flex-shrink: 0;
+  position: relative;
+  width: 270px;
+  height: 270px;
+  display: grid;
+  place-items: center;
+}
+
+/* Animated organic border (bubble effect) */
+.profile-wrapper.animated-border::before,
+.profile-wrapper.animated-border::after {
+  /* ocultar quando estilo líquido ativo */
+  display: none;
+  content: "";
+  position: absolute;
+  inset: -12px; /* sai para fora para ficar mais visível */
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent-color) 0%, var(--primary) 18%, var(--accent-color) 40%, var(--primary-light) 60%, var(--accent-color) 82%, var(--primary) 100%);
+  filter: blur(22px) saturate(1.4) brightness(1.05);
+  animation: spinGradient 11s linear infinite;
+  z-index: -2;
+  opacity: .95;
+}
+
+.profile-wrapper.animated-border::after {
+  animation: spinGradient 16s linear infinite reverse, pulseGlow 2s ease-in-out infinite;
+  mix-blend-mode: screen;
+  opacity: .8;
+}
+
+@keyframes spinGradient {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%,100% { filter: blur(14px) brightness(1); }
+  50% { filter: blur(22px) brightness(1.25); }
+}
+
+/* Extra layer with morphing shape */
+.profile-wrapper.animated-border .blob-layer {
+  display: none; /* substituída por SVG líquido */
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 25% 35%, var(--accent-color) 0%, rgba(0,0,0,0) 62%),
+    radial-gradient(circle at 70% 65%, var(--primary-light) 0%, rgba(0,0,0,0) 68%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.35) 0%, rgba(0,0,0,0) 55%);
+  animation: blobMorph 9s ease-in-out infinite, pulseGlow 7s ease-in-out infinite;
+  opacity: .55;
+  z-index: -1;
+  mix-blend-mode: plus-lighter;
+  filter: blur(26px) saturate(1.6);
+  pointer-events: none;
+}
+
+@keyframes blobMorph {
+  0%,100% { transform: translate(0,0) scale(1); border-radius: 46% 54% 48% 52% / 50% 46% 54% 50%; }
+  25% { transform: translate(4px,-6px) scale(1.03); border-radius: 55% 45% 52% 48% / 47% 58% 42% 53%; }
+  50% { transform: translate(-6px,4px) scale(0.97); border-radius: 50% 50% 46% 54% / 57% 43% 57% 43%; }
+  75% { transform: translate(3px,3px) scale(1.05); border-radius: 43% 57% 50% 50% / 45% 55% 48% 52%; }
 }
 
 .profile-img {
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--accent-color);
-  box-shadow: 0 0 20px rgba(142, 68, 173, 0.4);
+  position: relative;
+  z-index: 1;
+  border: 4px solid var(--accent-color); /* borda roxa restaurada */
+  box-shadow: 0 0 25px -4px var(--accent-color), 0 6px 28px -8px rgba(0,0,0,0.55);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), rgba(0,0,0,0) 60%);
+}
+
+/* ===== Borda Líquida (SVG) ===== */
+.liquid-border { overflow: visible; }
+.liquid-border .liquid-ring { position:absolute; inset:0; width:100%; height:100%; z-index:-2; }
+/* Path animado via SMIL (SVG <animate>) */
+.liquid-border .liquid-path { transform-origin:50% 50%; }
+
+
+/* Suporte reduzido: fallback remove morph */
+@media (prefers-reduced-motion: reduce) {
+  /* animação SMIL já reduz movimento automaticamente */
 }
 
 .text-wrapper {
@@ -480,6 +557,8 @@ body {
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .project:hover {
@@ -509,8 +588,30 @@ body {
 }
 
 .project p {
-  padding: 0 1.5rem 1rem;
+  padding: 0 1.5rem 1.25rem;
   color: var(--text-secondary);
+  flex-grow: 1;
+}
+
+/* Área de botões padronizada */
+.project-buttons {
+  display: flex;
+  gap: .75rem;
+  margin: 0;
+  padding: 0 1.5rem 1.5rem;
+  align-items: stretch;
+}
+
+.project-buttons .btn {
+  flex: 1 1 0;
+  justify-content: center;
+  min-width: 120px;
+}
+
+/* Ajuste para estado disabled visual consistente */
+.project-buttons .btn[aria-disabled="true"] {
+  filter: grayscale(.3) brightness(.85);
+  cursor: not-allowed;
 }
 
 .project a {
@@ -787,4 +888,58 @@ footer {
     transform: none;
     transition: none;
   }
+}
+
+/* ===== Migração de ajustes antigos (adjustments.css) ===== */
+/* Transição de troca do Spline */
+.fade-out-spline { 
+  transition: opacity .6s ease; 
+  opacity: 0 !important; 
+}
+/* Container do Spline */
+.spline-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--hero-bg, var(--bg-primary));
+}
+
+.spline-container, .spline-container * {
+  pointer-events: none !important;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#spline-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* Bandeiras redondas */
+.round-flag {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.language-selector button:hover .round-flag { transform: scale(1.1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.language-selector button[aria-current="true"] .round-flag { box-shadow: 0 0 0 2px var(--accent-color); }
+
+@media (max-width: 768px) {
+  .spline-container { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spline-container { display: none; }
 }

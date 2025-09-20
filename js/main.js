@@ -67,6 +67,16 @@ function handleLanguageChange(e) {
 // Inicializar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
   initPortfolio();
+  // Garantir que o link Início sempre volte ao topo
+  const homeLinks = document.querySelectorAll('a[href="#home"], .logo');
+  homeLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Permitir comportamento padrão de atualização do hash se necessário
+      e.preventDefault();
+      history.replaceState(null, '', '#home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 });
 
 // Verificar se a página foi carregada completamente
