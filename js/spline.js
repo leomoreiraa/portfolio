@@ -8,17 +8,20 @@ window.addEventListener('DOMContentLoaded',function(){
   const LIGHT_SCENE = 'https://prod.spline.design/zedCl-UcFAJatzXq/scene.splinecode';
   const DARK_SCENE = 'https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode';
   let currentScene = null;
-  const MIN_VIEWPORT_WIDTH = 640;
+  // Permitir carregamento também em mobile
+  const MIN_VIEWPORT_WIDTH = 0;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let importPromise = null;
 
   function desiredScene(){
+    // No mobile (<=768px) sempre usar a cena clara
+    if (window.innerWidth <= 768) return LIGHT_SCENE;
     const theme = document.documentElement.getAttribute('data-theme');
     return theme === 'dark' ? DARK_SCENE : LIGHT_SCENE;
   }
   function loadSpline() {
     if (splineLoaded) return;
-    if (prefersReduced || window.innerWidth < MIN_VIEWPORT_WIDTH) return;
+  if (prefersReduced || window.innerWidth < MIN_VIEWPORT_WIDTH) return;
     splineLoaded = true;
     if(!importPromise){
       importPromise = import('https://unpkg.com/@splinetool/viewer@1.10.64/build/spline-viewer.js');

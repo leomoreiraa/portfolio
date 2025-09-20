@@ -965,8 +965,43 @@ footer {
 .language-selector button[aria-current="true"] .round-flag { box-shadow: 0 0 0 2px var(--accent-color); }
 
 @media (max-width: 768px) {
-  .spline-container { display: none; }
+  /* Mostrar spline no mobile e adicionar overlay para legibilidade */
+  .spline-container { display:block; }
+  /* Overlay somente no tema escuro */
+  [data-theme="dark"] .hero::after {
+    content:"";
+    position:absolute; inset:0; z-index:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.25) 45%, rgba(0,0,0,.72) 100%);
+    pointer-events:none;
+  }
+  /* Tema claro: sem escurecimento extra */
+  [data-theme="light"] .hero::after { content:""; position:absolute; inset:0; z-index:0; background: linear-gradient(180deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,.15) 55%, rgba(255,255,255,.0) 100%); pointer-events:none; }
+  .hero .container { position:relative; z-index:1; }
 }
+
+/* ==== Melhorar legibilidade dos botões sobre o Spline ==== */
+.hero-cta .btn {
+  backdrop-filter: blur(6px) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) saturate(1.2);
+  position: relative;
+}
+.hero-cta .btn-primary {
+  background: var(--accent-color);
+  box-shadow: 0 4px 18px -4px rgba(0,0,0,.35), 0 2px 6px -2px rgba(0,0,0,.4);
+}
+.hero-cta .btn-primary:hover { box-shadow: 0 6px 22px -4px rgba(0,0,0,.45), 0 3px 8px -2px rgba(0,0,0,.5); }
+
+.hero-cta .btn-secondary {
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.22);
+  color: var(--text-primary);
+  box-shadow: 0 3px 14px -4px rgba(0,0,0,.5);
+}
+[data-theme="light"] .hero-cta .btn-secondary { background: rgba(255,255,255,.55); color: var(--text-primary); border: 1px solid rgba(0,0,0,.12); }
+.hero-cta .btn-secondary:hover { background: rgba(0,0,0,.55); color: var(--accent-color); }
+[data-theme="light"] .hero-cta .btn-secondary:hover { background: rgba(255,255,255,.75); color: var(--accent-color); }
+
+/* Versões empilhadas em mobile já herdadas, manter largura total */
 
 @media (prefers-reduced-motion: reduce) {
   .spline-container { display: none; }
