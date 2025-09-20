@@ -1,4 +1,3 @@
-// Spline background loader (extracted from inline)
 window.addEventListener('DOMContentLoaded',function(){
   const bgDiv = document.getElementById('spline-bg');
   const loader = document.getElementById('spline-bg-loader');
@@ -8,13 +7,11 @@ window.addEventListener('DOMContentLoaded',function(){
   const LIGHT_SCENE = 'https://prod.spline.design/zedCl-UcFAJatzXq/scene.splinecode';
   const DARK_SCENE = 'https://prod.spline.design/abIU3H47vgPpUceG/scene.splinecode';
   let currentScene = null;
-  // Permitir carregamento também em mobile
   const MIN_VIEWPORT_WIDTH = 0;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let importPromise = null;
 
   function desiredScene(){
-    // No mobile (<=768px) sempre usar a cena clara
     if (window.innerWidth <= 768) return LIGHT_SCENE;
     const theme = document.documentElement.getAttribute('data-theme');
     return theme === 'dark' ? DARK_SCENE : LIGHT_SCENE;
@@ -36,6 +33,7 @@ window.addEventListener('DOMContentLoaded',function(){
       });
       bgDiv.appendChild(viewer);
       loader.style.display = 'none';
+      ensureBrandCover();
     }).catch(()=>{
       loader.innerHTML = '<span style="color:white;font-size:1.2rem;">Falha ao carregar animação 3D.</span>';
       splineLoaded = false;
@@ -63,6 +61,7 @@ window.addEventListener('DOMContentLoaded',function(){
         setTimeout(()=>{ if(oldViewer && oldViewer.parentNode){ oldViewer.parentNode.removeChild(oldViewer); } },400);
       });
       viewer = newViewer; currentScene = target;
+      ensureBrandCover();
     });
   }
   function unloadSpline() {
@@ -92,6 +91,14 @@ window.addEventListener('DOMContentLoaded',function(){
     loadSpline();
   }
   document.addEventListener('themeChanged',switchSceneForce);
+  function ensureBrandCover(){
+    if(!bgDiv) return;
+    if(!document.getElementById('botao-sll')){
+      const cover = document.createElement('div');
+      cover.id = 'botao-sll';
+      bgDiv.appendChild(cover);
+    }
+  }
   document.addEventListener('visibilitychange',()=>{ if(!document.hidden && !viewer){ loadSpline(); } });
   window.addEventListener('resize',()=>{ if(!viewer && !prefersReduced && window.innerWidth >= MIN_VIEWPORT_WIDTH){ loadSpline(); } });
 });

@@ -1,18 +1,11 @@
-/* 
- * Sistema de temas claro/escuro para o portfólio
- * Implementa detecção automática de preferência do sistema
- * e permite alternar manualmente entre os temas
- */
-
 :root {
-  /* Tema claro (moderno) */
-  --bg-primary: #f5f7fa; /* fundo base neutro frio suave */
-  --bg-secondary: #eef1f5; /* painéis secundários */
-  --bg-tertiary: #e6eaf0; /* divisões sutis */
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #eef1f5;
+  --bg-tertiary: #e6eaf0;
   --text-primary: #1f2430;
   --text-secondary: #495163;
   --text-muted: #788293;
-  --accent-color: #8256d0; /* roxo moderno mais limpo */
+  --accent-color: #8256d0;
   --accent-light: #9b74e0;
   --accent-dark: #6842b0;
   --border-color: #d3d9e2;
@@ -26,11 +19,12 @@
   --error: #d64545;
   --info: #2f80d8;
   --gradient-accent: linear-gradient(135deg,#8256d0 0%, #9b74e0 50%, #6842b0 100%);
-  --hero-bg: radial-gradient(circle at 35% 35%, #ffffff 0%, #f5f7fa 55%, #e6eaf0 100%);
+  --hero-bg: #f3f5f8;
+  --hero-cover-color: #eef1f5;
+  --cover: #f2f5f9;
 }
 
 [data-theme="dark"] {
-  /* Tema escuro refinado */
   --bg-primary: #15161b;
   --bg-secondary: #1d1f25;
   --bg-tertiary: #262a31;
@@ -51,20 +45,19 @@
   --error: #d24f55;
   --info: #4a8ddf;
   --gradient-accent: linear-gradient(135deg,#784fc3 0%, #9b74e0 55%, #b691ee 100%);
-  --hero-bg: radial-gradient(circle at 50% 40%, #1d1f25 0%, #15161b 70%, #101115 100%);
+  --hero-bg: #15161b;
+  --hero-cover-color: #121317;
+  --cover: #14171b;
 }
 
-/* Transição suave entre temas */
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilos específicos para o tema escuro */
 [data-theme="dark"] img:not(.preserve-color) {
   filter: brightness(0.9);
 }
 
-/* Estilos específicos para o tema claro */
 [data-theme="light"] .theme-toggle .sun-icon {
   display: none;
 }
@@ -73,7 +66,6 @@ body {
   display: inline-block;
 }
 
-/* Estilos específicos para o tema escuro */
 [data-theme="dark"] .theme-toggle .sun-icon {
   display: inline-block;
 }
@@ -82,7 +74,6 @@ body {
   display: none;
 }
 
-/* Botão de alternância de tema */
 .theme-toggle {
   background: none;
   border: none;
@@ -107,7 +98,6 @@ body {
   border-radius: 50%;
 }
 
-/* Ícones de tema */
 .theme-toggle i {
   pointer-events: none;
 }

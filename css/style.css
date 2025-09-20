@@ -10,12 +10,7 @@
   pointer-events: none;
   opacity: 0.6;
 }
-/* 
- * Estilos principais do portfólio
- * Design moderno, profissional e estiloso
- */
 
-/* ===== Configurações Globais ===== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 *, *::before, *::after {
@@ -27,10 +22,9 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Compensar o header fixo */
+  scroll-padding-top: 80px;
 }
 
-/* Corrige bloco body quebrado e define estrutura flex básica */
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-primary);
@@ -45,7 +39,6 @@ body {
 main { flex: 1 0 auto; }
 footer { flex-shrink: 0; }
 
-/* Container */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -53,7 +46,6 @@ footer { flex-shrink: 0; }
   padding: 0 1.5rem;
 }
 
-/* ===== Tipografia ===== */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -101,24 +93,20 @@ a:hover {
   color: var(--accent-light);
 }
 
-/* Acessibilidade: foco visível consistente */
 *:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Reduzir animações para usuários com prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .stagger-item, .fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
-  /* Animação SVG mantida (SMIL); poderia ser pausada removendo o elemento <animate> dinamicamente via JS se necessário */
 }
 
-/* ===== Header ===== */
 header {
   position: fixed;
   top: 0;
@@ -153,7 +141,6 @@ header {
   margin-right: 10px;
 }
 
-/* Navegação */
 nav {
   display: flex;
   align-items: center;
@@ -191,7 +178,6 @@ nav {
   width: 100%;
 }
 
-/* Seletor de idioma */
 .language-selector {
   display: flex;
   align-items: center;
@@ -222,7 +208,6 @@ nav {
   border-radius: 50%;
 }
 
-/* Menu mobile */
 .mobile-menu {
   display: none;
   background: none;
@@ -232,7 +217,6 @@ nav {
   cursor: pointer;
 }
 
-/* ===== Hero Section ===== */
 .hero {
   position: fixed;
   top: 0;
@@ -254,7 +238,6 @@ main > section:not(.hero) {
 }
 
 body {
-  /* Espaço para hero fixo somente em desktops (ajustado depois em media queries) */
   padding-top: 100vh;
 }
 
@@ -290,7 +273,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Layout da home */
 .home-layout {
   display: flex;
   align-items: center;
@@ -307,14 +289,12 @@ body {
   place-items: center;
 }
 
-/* Animated organic border (bubble effect) */
 .profile-wrapper.animated-border::before,
 .profile-wrapper.animated-border::after {
-  /* ocultar quando estilo líquido ativo */
   display: none;
   content: "";
   position: absolute;
-  inset: -12px; /* sai para fora para ficar mais visível */
+  inset: -12px;
   border-radius: 50%;
   background: conic-gradient(from 0deg, var(--accent-color) 0%, var(--primary) 18%, var(--accent-color) 40%, var(--primary-light) 60%, var(--accent-color) 82%, var(--primary) 100%);
   filter: blur(22px) saturate(1.4) brightness(1.05);
@@ -338,9 +318,8 @@ body {
   50% { filter: blur(22px) brightness(1.25); }
 }
 
-/* Extra layer with morphing shape */
 .profile-wrapper.animated-border .blob-layer {
-  display: none; /* substituída por SVG líquido */
+  display: none;
   position: absolute;
   inset: -14px;
   border-radius: 50%;
@@ -370,21 +349,17 @@ body {
   object-fit: cover;
   position: relative;
   z-index: 1;
-  border: 4px solid var(--accent-color); /* borda roxa restaurada */
+  border: 4px solid var(--accent-color);
   box-shadow: 0 0 25px -4px var(--accent-color), 0 6px 28px -8px rgba(0,0,0,0.55);
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), rgba(0,0,0,0) 60%);
 }
 
-/* ===== Borda Líquida (SVG) ===== */
 .liquid-border { overflow: visible; }
 .liquid-border .liquid-ring { position:absolute; inset:0; width:100%; height:100%; z-index:-2; }
-/* Path animado via SMIL (SVG <animate>) */
 .liquid-border .liquid-path { transform-origin:50% 50%; }
 
 
-/* Suporte reduzido: fallback remove morph */
 @media (prefers-reduced-motion: reduce) {
-  /* animação SMIL já reduz movimento automaticamente */
 }
 
 .text-wrapper {
@@ -392,7 +367,6 @@ body {
   min-width: 300px;
 }
 
-/* Ícones de tecnologia */
 .tech-icons {
   display: flex;
   flex-wrap: wrap;
@@ -425,7 +399,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Botões CTA */
 .hero-cta {
   display: flex;
   gap: 1rem;
@@ -471,17 +444,14 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== Seções ===== */
 .section {
   padding: 6rem 0;
 }
 
-/* Seção Sobre */
 .about {
   background-color: var(--bg-secondary);
 }
 
-/* Seção Carreira */
 .timeline {
   position: relative;
   max-width: 1000px;
@@ -544,7 +514,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Seção Projetos */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -593,7 +562,6 @@ body {
   flex-grow: 1;
 }
 
-/* Área de botões padronizada */
 .project-buttons {
   display: flex;
   gap: .75rem;
@@ -608,7 +576,6 @@ body {
   min-width: 120px;
 }
 
-/* Ajuste para estado disabled visual consistente */
 .project-buttons .btn[aria-disabled="true"] {
   filter: grayscale(.3) brightness(.85);
   cursor: not-allowed;
@@ -620,7 +587,6 @@ body {
   font-weight: 500;
 }
 
-/* Seção Contato */
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -649,7 +615,6 @@ body {
   color: var(--accent-color);
 }
 
-/* ===== Footer ===== */
 footer {
   background-color: var(--footer-bg);
   padding: 3rem 0;
@@ -714,7 +679,6 @@ footer {
   font-size: 0.875rem;
 }
 
-/* ===== Animações ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -759,7 +723,6 @@ footer {
   transform: translateY(0);
 }
 
-/* ===== Responsividade ===== */
 @media (max-width: 992px) {
   .timeline-line {
     left: 30px;
@@ -871,7 +834,6 @@ footer {
   }
 }
 
-/* ==== Ajustes Mobile Melhorados (após regras existentes para garantir precedência) ==== */
 @media (max-width: 992px) {
   body { padding-top: 80px; }
   .hero { position: relative; width: 100%; height: auto; padding: 7rem 0 4rem; }
@@ -899,7 +861,6 @@ footer {
   .hero-cta .btn { width: 100%; }
 }
 
-/* Preferência por redução de movimento */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -918,13 +879,10 @@ footer {
   }
 }
 
-/* ===== Migração de ajustes antigos (adjustments.css) ===== */
-/* Transição de troca do Spline */
 .fade-out-spline { 
   transition: opacity .6s ease; 
   opacity: 0 !important; 
 }
-/* Container do Spline */
 .spline-container {
   position: absolute;
   top: 0;
@@ -952,7 +910,6 @@ footer {
   background: transparent;
 }
 
-/* Bandeiras redondas */
 .round-flag {
   width: 24px;
   height: 24px;
@@ -965,21 +922,17 @@ footer {
 .language-selector button[aria-current="true"] .round-flag { box-shadow: 0 0 0 2px var(--accent-color); }
 
 @media (max-width: 768px) {
-  /* Mostrar spline no mobile e adicionar overlay para legibilidade */
   .spline-container { display:block; }
-  /* Overlay somente no tema escuro */
   [data-theme="dark"] .hero::after {
     content:"";
     position:absolute; inset:0; z-index:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.25) 45%, rgba(0,0,0,.72) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.28) 45%, rgba(0,0,0,.68) 100%);
     pointer-events:none;
   }
-  /* Tema claro: sem escurecimento extra */
-  [data-theme="light"] .hero::after { content:""; position:absolute; inset:0; z-index:0; background: linear-gradient(180deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,.15) 55%, rgba(255,255,255,.0) 100%); pointer-events:none; }
+  [data-theme="light"] .hero::after { content:none; }
   .hero .container { position:relative; z-index:1; }
 }
 
-/* ==== Melhorar legibilidade dos botões sobre o Spline ==== */
 .hero-cta .btn {
   backdrop-filter: blur(6px) saturate(1.2);
   -webkit-backdrop-filter: blur(6px) saturate(1.2);
@@ -1001,8 +954,28 @@ footer {
 .hero-cta .btn-secondary:hover { background: rgba(0,0,0,.55); color: var(--accent-color); }
 [data-theme="light"] .hero-cta .btn-secondary:hover { background: rgba(255,255,255,.75); color: var(--accent-color); }
 
-/* Versões empilhadas em mobile já herdadas, manter largura total */
 
 @media (prefers-reduced-motion: reduce) {
   .spline-container { display: none; }
+}
+
+#botao-sll {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 300px;
+  height: 100px;
+  background: var(--cover) !important;
+  z-index: 5;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  #botao-sll { width: 180px; height: 60px; bottom: 6px; right: 6px; }
+  [data-theme="dark"] #botao-sll { background: var(--hero-cover-color, var(--bg-primary)) !important; }
 }
