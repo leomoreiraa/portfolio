@@ -1,4 +1,4 @@
- 
+  
 const defaultLanguage = 'pt';
 const supportedLanguages = ['pt', 'en', 'zh'];
 let currentLanguage = defaultLanguage;

@@ -26,9 +26,9 @@
                     <li><a href="#contact" data-key="contact">Contato</a></li>
                 </ul>
                 <div class="language-selector">
-                    <button data-lang="pt" aria-current="true" title="Português"><img src="assets/images/brazil-flag-round.png" alt="Português" class="round-flag"></button>
+                   <-- <button data-lang="pt" aria-current="true" title="Português"><img src="assets/images/brazil-flag-round.png" alt="Português" class="round-flag"></button>
                     <button data-lang="en" aria-current="false" title="English"><img src="assets/images/usa-flag-round.png" alt="English" class="round-flag"></button>
-                        <button data-lang="zh" aria-current="false" title="中文"><img src="assets/images/china-flag.png" alt="中文" class="round-flag"></button>
+                    <button data-lang="zh" aria-current="false" title="中文"><img src="assets/images/china-flag.png" alt="中文" class="round-flag"></button> --/>
                 </div>
                 <button class="theme-toggle" aria-label="Alternar tema">
                     <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
                             <a href="#projects" class="btn btn-primary"><i class="fas fa-code" aria-hidden="true"></i><span data-key="project1Link">Ver Projetos</span></a>
                             <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope" aria-hidden="true"></i><span data-key="contactTitle">Entre em Contato</span></a>
                             <a href="assets/images/CV - Português.pdf" class="btn btn-secondary" download referrerpolicy="no-referrer" data-key="cvDownloadPt" aria-label="Baixar CV em Português"><i class="fas fa-file-download" aria-hidden="true"></i><span data-key="cvDownloadPt">CV (PT)</span></a>
-                            <a href="assets/images/CV - Ingles.pdf" class="btn btn-secondary" download referrerpolicy="no-referrer" data-key="cvDownloadEn" aria-label="Download CV in English"><i class="fas fa-file-download" aria-hidden="true"></i><span data-key="cvDownloadEn">CV (EN)</span></a>
+                            <a href="assets/images/CV - Ingles.pdf" class="btn btn-secondary" download referrerpol  icy="no-referrer" data-key="cvDownloadEn" aria-label="Download CV in English"><i class="fas fa-file-download" aria-hidden="true"></i><span data-key="cvDownloadEn">CV (EN)</span></a>
                         </div>
                     </div>
                 </div>
@@ -110,14 +110,22 @@
                     <div class="timeline-item right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content fade-in-left">
-                            <div class="timeline-date" data-key="career2Company">Seu Lugar Telecom<br>2023 – 2024</div>
-                            <h3 data-key="career2Title">Auxiliar Geral</h3>
-                            <p data-key="career2Description">Descrição carreira 2</p>
+                            <div class="timeline-date">Seu Lugar Telecom<br>2023 – 2024</div>
+                            <h3>Auxiliar Geral</h3>
+                            <p>Atuação em funções administrativas e operacionais, suporte ao time e atendimento ao cliente.</p>
                         </div>
                     </div>
                     <div class="timeline-item left">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content fade-in-right">
+                            <div class="timeline-date">Seu Lugar Telecom<br>2023 – 2024</div>
+                            <h3>PJ Desenvolvedor Fullstack Junior</h3>
+                            <p>Desenvolvimento de aplicações web e mobile, incluindo área do cliente e landing pages para a empresa. Utilização de C#, Angular, Ionic e APIs REST para entregar soluções modernas e responsivas.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content fade-in-left">
                             <div class="timeline-date" data-key="career3Company">Ctrl+Play Limeira<br>2024 – Atual</div>
                             <h3 data-key="career3Title">Instrutor de Robótica e Programação</h3>
                             <p data-key="career3Description">Descrição carreira 3</p>
@@ -135,41 +143,101 @@
                         <div class="project-thumb">
                             <img src="assets/images/Project1.png" alt="Preview do projeto Minima Studio (Landing Page)" loading="lazy" decoding="async">
                         </div>
-                        <h3 data-key="project1Title">Projeto 1</h3>
-                        <p class="project-desc" data-key="project1Description">
-                            Minima Studio é uma landing page para um estúdio fictício de design visual, focada em branding e interfaces digitais. A plataforma oferece uma experiência moderna e sofisticada, com navegação fluida, design responsivo e elementos que destacam a identidade minimalista da marca.
+                        <h3>Minima Studio (Landing Page)</h3>
+                        <p class="project-desc">
+                            Minima Studio é uma landing page pessoal criada para uma empresa fictícia de design visual. O projeto foca em branding, interfaces digitais e experiência moderna, com navegação fluida, design responsivo e elementos minimalistas. Ideal para portfólios ou apresentação de negócios criativos.
                         </p>
                         <div class="project-buttons">
                             <a href="https://landing-page-minimalista.vercel.app/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
                                 <i class="fas fa-eye" aria-hidden="true"></i>
-                                <span data-key="deploy">Deploy</span>
+                                Deploy
                             </a>
                             <a href="https://github.com/leomoreiraa/landing-page-minimalista" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
                                 <i class="fab fa-github" aria-hidden="true"></i>
-                                <span data-key="github">GitHub</span>
+                                GitHub
                             </a>
                         </div>
                     </div>
                     
                     <div class="project fade-in">
                         <div class="project-thumb">
-                            <img src="assets/images/Project2.png" alt="Preview do projeto DevLoop (Plataforma Mentoria)" loading="lazy" decoding="async">
+                            <img src="assets/images/Project2.png" alt="Preview do projeto DevLoop (Plataforma de Mentoria)" loading="lazy" decoding="async">
                         </div>
-                        <h3 data-key="project2Title">Projeto 2</h3>
-                        <p class="project-desc" data-key="project2Description">
-                            DevLoop é uma plataforma web de mentoria para desenvolvedores, conectando mentees e mentores de tecnologia em um ambiente moderno e intuitivo. Permite agendamento de sessões, gerenciamento de disponibilidade, avaliações, chat e acompanhamento de progresso, facilitando o crescimento profissional e a troca de conhecimento na área de desenvolvimento de software.
+                        <h3>DevLoop (Plataforma de Mentoria)</h3>
+                        <p class="project-desc">
+                            DevLoop é uma plataforma web completa para mentoria de desenvolvedores. Permite cadastro de mentores e mentorados, agendamento de sessões, gerenciamento de disponibilidade, chamadas de vídeo (WebRTC), chat integrado, avaliações e upload de vídeos. Backend em Java Spring Boot e frontend em React, com foco em comunicação, acompanhamento profissional e experiência responsiva.
                         </p>
                         <div class="project-buttons">
                             <a href="https://leomoreiraa.github.io/DevLoop/" target="_blank" class="btn btn-primary" rel="noopener noreferrer" tabindex="-1" aria-disabled="true" style="pointer-events: none; opacity: 0.6;">
                                 <i class="fas fa-eye" aria-hidden="true"></i>
-                                <span data-key="deploy">Deploy</span>
+                                Deploy
                             </a>
                             <a href="https://github.com/leomoreiraa/DevLoop" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
                                 <i class="fab fa-github" aria-hidden="true"></i>
-                                <span data-key="github">GitHub</span>
+                                GitHub
                             </a>
                         </div>
                     </div>
+                        <!-- Projeto 3 -->
+                        <div class="project fade-in">
+                            <div class="project-thumb">
+                                <img src="assets/images/proj3.png" alt="Preview do projeto Luna" loading="lazy" decoding="async">
+                            </div>
+                            <h3>Luna (Gestão Financeira)</h3>
+                            <p class="project-desc">
+                                Luna é uma aplicação web para gerenciamento de dinheiro, criada com TypeScript e Vite. Permite controlar gastos, receitas e visualizar o saldo de forma intuitiva e responsiva. Ideal para quem busca organização financeira pessoal ou empresarial, com foco em usabilidade e design moderno.
+                            </p>
+                            <div class="project-buttons">
+                                <a href="https://luna-gilt.vercel.app/#/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                    Deploy
+                                </a>
+                                <a href="https://github.com/leomoreiraa/Luna" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Projeto 4 -->
+                        <div class="project fade-in">
+                            <div class="project-thumb">
+                                <img src="assets/images/proj4.png" alt="Preview do projeto Lista de Tarefas Moderna" loading="lazy" decoding="async">
+                            </div>
+                            <h3>Lista de Tarefas Moderna</h3>
+                            <p class="project-desc">
+                                Aplicação web desenvolvida como desafio técnico, focada em acessibilidade, usabilidade e visual moderno. Permite adicionar, editar, excluir e filtrar tarefas por status e tags, definir data de vencimento, alternar entre temas claro/escuro e ajustar tamanho da fonte. Totalmente responsiva, com persistência local e navegação por teclado.
+                            </p>
+                            <div class="project-buttons">
+                                <a href="https://todo-list-desafio-tecnico-oix14ffrm-leomoreiraas-projects.vercel.app/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                    Deploy
+                                </a>
+                                <a href="https://github.com/leomoreiraa/Todo-List---Desafio-tecnico" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Projeto 5 -->
+                        <div class="project fade-in">
+                            <div class="project-thumb">
+                                <img src="assets/images/proj5.png" alt="Preview do projeto Orbitr (Kanban)" loading="lazy" decoding="async">
+                            </div>
+                            <h3>Orbitr (Kanban de Projetos)</h3>
+                            <p class="project-desc">
+                                Orbitr é uma aplicação web de Kanban para gestão visual de tarefas e colaboração em equipes. Possui backend em Java Spring Boot e frontend em Angular, com recursos como quadros, tarefas com comentários, anexos, etiquetas, notificações por e-mail, autenticação JWT e integração com PostgreSQL. Ideal para organizar projetos, atribuir tarefas e acompanhar o progresso em tempo real.
+                            </p>
+                            <div class="project-buttons">
+                                <a href="https://orbitrdevleo.vercel.app/home" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                    Deploy
+                                </a>
+                                <a href="https://github.com/leomoreiraa/Orbitr" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>
