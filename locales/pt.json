@@ -36,6 +36,8 @@
   "project2Title": "DevLoop (Plataforma de Mentoria)",
   "project2Description": "DevLoop é uma plataforma web completa para mentoria de desenvolvedores. Permite cadastro de mentores e mentorados, agendamento de sessões, gerenciamento de disponibilidade, chamadas de vídeo (WebRTC), chat integrado, avaliações e upload de vídeos. Backend em Java Spring Boot e frontend em React, com foco em comunicação e experiência responsiva.",
   "project2Link": "Ver mais",
+  "project1Link": "Ver Projetos",
+  "deploy": "Visualizar",
     "project3Title": "Luna (Gestão Financeira)",
     "project3Description": "Luna é uma aplicação web para gerenciamento de dinheiro, criada com TypeScript e Vite. Permite controlar despesas, receitas e visualizar o saldo de forma intuitiva e responsiva. Ideal para quem busca organização financeira pessoal ou empresarial, com foco em usabilidade e design moderno.",
     "project4Title": "Lista de Tarefas Moderna",
