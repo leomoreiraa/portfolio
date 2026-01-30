@@ -1,67 +1,84 @@
-function initPortfolio() {
-  if (!window.themeUtils || !window.i18n || !window.animationUtils) {
-    setTimeout(initPortfolio, 100);
-    return;
-  }
-  checkAndLoadFlags();
-  document.addEventListener('themeChanged', handleThemeChange);
-  document.addEventListener('languageChanged', handleLanguageChange);
-}
+// ========== MAIN - Initialization ==========
 
-function checkAndLoadFlags() {
-  const flagsNeeded = [
-    { lang: 'pt', src: 'assets/images/brazil-flag.png' },
-    { lang: 'en', src: 'assets/images/usa-flag.png' },
-    { lang: 'zh', src: 'assets/images/china-flag.png' }
-  ];
-  flagsNeeded.forEach(flag => {
-    const img = new Image();
-    img.src = flag.src;
-    img.onerror = () => {
-      console.warn(`Bandeira para ${flag.lang} não encontrada.`);
-    };
-  });
-}
-
-function handleThemeChange(e) {
-  const theme = e.detail.theme;
-  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-  if (metaThemeColor) {
-    metaThemeColor.setAttribute('content', theme === 'dark' ? '#252525' : '#f8f5e8');
-  }
-}
-
-function handleLanguageChange(e) {
-  const language = e.detail.language;
-  document.documentElement.lang = language;
-  document.title = window.i18n.getTranslation('title') + ' | ' + window.i18n.getTranslation('nav.home');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initPortfolio();
-  const homeLinks = document.querySelectorAll('a[href="#home"], .logo');
-  homeLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      history.replaceState(null, '', '#home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize carousels
+    loadCarousels();
+    setupCarouselButtons();
+    
+    // Initialize language switcher
+    setupLanguageSwitcher();
+    
+    // Load projects grid
+    loadProjectsGrid();
+    
+    // Auto-rotate carousels
+    setInterval(() => rotateCarousel('programming'), 4000);
+    setInterval(() => rotateCarousel('science'), 5000);
+    setInterval(() => rotateCarousel('references'), 6000);
+    setInterval(() => rotateCarousel('all'), 4500);
+    
+    // Setup smooth scroll
+    setupSmoothScroll();
+    
+    // Setup menu scroll effect
+    setupMenuScrollEffect();
 });
 
-window.addEventListener('load', () => {
-  if (window.location.hash) {
-    const targetId = window.location.hash;
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      setTimeout(() => {
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }, 300);
+// ========== PROJECTS GRID ==========
+function loadProjectsGrid() {
+    const grid = document.getElementById('projects-grid');
+    if (!grid) return;
+    
+    // Combine all projects from programming category
+    const allProjects = projects.programming || [];
+    
+    if (allProjects.length === 0) {
+        grid.innerHTML = '<p class="no-projects">No projects available yet.</p>';
+        return;
     }
-  }
-});
+    
+    grid.innerHTML = allProjects.map(project => `
+        <a href="${project.link}" class="project-item" ${project.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+            <div class="project-image">
+                <div class="project-overlay">
+                    <span>View Project</span>
+                </div>
+            </div>
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="project-tags">
+                    ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </a>
+    `).join('');
+}
+
+// ========== SMOOTH SCROLL ==========
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// ========== MENU SCROLL EFFECT ==========
+function setupMenuScrollEffect() {
+    window.addEventListener('scroll', () => {
+        const menu = document.getElementById('menu');
+        if (window.pageYOffset > 100) {
+            menu.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            menu.style.boxShadow = 'none';
+        }
+    });
+}
