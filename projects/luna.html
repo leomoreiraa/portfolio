@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Luna - DevLeo Magazine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/magazine.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Menu -->
+    <header id="menu" class="menu">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../assets/images/Logo.png" alt="DevLeo Logo" />
+          <h1>DevLeo</h1>
+        </a>
+      </div>
+      <nav>
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#projects">Projects</a>
+      </nav>
+    </header>
+
+    <!-- Magazine Article -->
+    <article class="magazine-article">
+      <!-- Hero Section -->
+      <header class="article-hero luna-theme">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="article-meta">
+            <span class="category-badge">Personal Finance</span>
+            <span class="reading-time">15 min read</span>
+          </div>
+          <h1 class="article-title">Luna</h1>
+          <p class="article-subtitle">Designing a Privacy-First Personal Finance Application: Local Storage, Data Visualization, and Financial Simulation</p>
+          <div class="article-tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Recharts</span>
+            <span class="tag">LocalStorage</span>
+          </div>
+          <div class="article-author">
+            <div class="author-info">
+              <span class="author-name">Leonardo Moreira</span>
+              <span class="publish-date">Published January 2025</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Article Body -->
+      <div class="article-body">
+        <!-- Abstract -->
+        <section class="article-section abstract">
+          <h2>Abstract</h2>
+          <p>
+            Luna is a comprehensive personal finance management application that prioritizes user privacy
+            by storing all data locally in the browser. This article examines the architectural decisions
+            behind building a feature-rich financial tool without backend dependencies, the challenges of
+            client-side data persistence, and the implementation of financial simulation algorithms.
+          </p>
+        </section>
+
+        <!-- Table of Contents -->
+        <nav class="table-of-contents">
+          <h3>Contents</h3>
+          <ol>
+            <li><a href="#introduction">Introduction & Philosophy</a></li>
+            <li><a href="#architecture">Application Architecture</a></li>
+            <li><a href="#privacy">Privacy-First Design</a></li>
+            <li><a href="#visualization">Data Visualization</a></li>
+            <li><a href="#simulation">Financial Simulation Engine</a></li>
+            <li><a href="#theming">Dynamic Theming System</a></li>
+            <li><a href="#challenges">Technical Challenges</a></li>
+            <li><a href="#references">References</a></li>
+          </ol>
+        </nav>
+
+        <!-- Section 1: Introduction -->
+        <section id="introduction" class="article-section">
+          <h2>1. Introduction & Philosophy</h2>
+          <p>
+            Personal finance applications typically require users to entrust sensitive financial data
+            to third-party servers. Luna challenges this paradigm by implementing a fully client-side
+            architecture where all data remains on the user's device.
+          </p>
+          <blockquote>
+            <p>"Luna is your personal financial assistant. Let's take a quick look at the features!"</p>
+            <cite>— Application Tutorial Introduction</cite>
+          </blockquote>
+          <p>
+            The application provides comprehensive financial management capabilities including:
+          </p>
+          <ul>
+            <li><strong>Transaction Tracking:</strong> Income, expenses, and investments with categorization</li>
+            <li><strong>Multi-Wallet Support:</strong> Cash accounts, benefit cards (VA, VR, VT), and credit cards</li>
+            <li><strong>Financial Projections:</strong> Long-term simulation based on configurable parameters</li>
+            <li><strong>Visual Reports:</strong> Interactive charts and exportable PDF reports</li>
+            <li><strong>Theme Customization:</strong> Complete visual personalization including background images</li>
+          </ul>
+        </section>
+
+        <!-- Section 2: Architecture -->
+        <section id="architecture" class="article-section">
+          <h2>2. Application Architecture</h2>
+
+          <h3>2.1 Technology Stack</h3>
+          <p>
+            Luna is built with modern React patterns and tooling:
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">vite.config.ts</span>
+            </div>
+            <pre><code>import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
+
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, '.', '');
+    return {
+      define: {
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+      },
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, '.'),
+        }
+      }
+    };
+});</code></pre>
+          </div>
+
+          <h3>2.2 Data Model</h3>
+          <p>
+            The type system ensures data integrity across the application:
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">types.ts</span>
+            </div>
+            <pre><code>export enum TransactionType {
+  INCOME = 'INCOME',
+  EXPENSE = 'EXPENSE',
+  INVESTMENT = 'INVESTMENT'
+}
+
+export enum WalletType {
+  CASH = 'CASH',
+  BENEFIT_VA = 'BENEFIT_VA',    // Vale Alimentação
+  BENEFIT_VR = 'BENEFIT_VR',    // Vale Refeição
+  BENEFIT_VT = 'BENEFIT_VT',    // Vale Transporte
+  CREDIT_CARD = 'CREDIT_CARD',
+  INVESTMENT = 'INVESTMENT',
+  OTHER = 'OTHER'
+}
+
+export interface Transaction {
+  id: string;
+  type: TransactionType;
+  amount: number;
+  date: string;
+  categoryId: string;
+  walletId: string;
+  description?: string;
+  installmentInfo?: InstallmentInfo;
+}</code></pre>
+          </div>
+
+          <h3>2.3 State Management</h3>
+          <p>
+            Application state is managed through React's useState with a custom <code>useLocalStorage</code>
+            hook that automatically persists changes:
+          </p>
+
+          <div class="info-box">
+            <h4>Custom Hook: useLocalStorage</h4>
+            <p>
+              The hook wraps useState with automatic serialization/deserialization, ensuring data
+              survives page refreshes while maintaining type safety through TypeScript generics.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 3: Privacy -->
+        <section id="privacy" class="article-section">
+          <h2>3. Privacy-First Design</h2>
+
+          <p>
+            Financial data is inherently sensitive. Luna's architecture ensures complete data sovereignty:
+          </p>
+
+          <h3>3.1 Local-Only Storage</h3>
+          <ul>
+            <li><strong>No Server Dependency:</strong> The application functions entirely offline after initial load</li>
+            <li><strong>No Analytics:</strong> Zero telemetry or usage tracking</li>
+            <li><strong>No Third-Party Access:</strong> Data never leaves the browser</li>
+          </ul>
+
+          <div class="challenge-box">
+            <h4>Challenge: Data Persistence Limitations</h4>
+            <p>
+              LocalStorage has inherent limitations: ~5-10MB storage limit, synchronous API blocking
+              the main thread, and vulnerability to accidental clearing.
+            </p>
+            <div class="solution">
+              <strong>Solution:</strong> Implemented a robust backup/restore system with JSON export
+              functionality. Users can download complete backups and restore from any device.
+            </div>
+          </div>
+
+          <h3>3.2 Backup & Restore System</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">App.tsx</span>
+            </div>
+            <pre><code>const handleExportData = () => {
+  const fullData = {
+    transactions,
+    wallets,
+    creditCards,
+    monthlyIncomes,
+    themeSettings,
+    exportedAt: new Date().toISOString()
+  };
+
+  const jsonString = 'data:application/json;charset=utf-8,' +
+    encodeURIComponent(JSON.stringify(fullData, null, 2));
+
+  const link = document.createElement('a');
+  link.href = jsonString;
+  link.download = `luna_backup_${new Date().toISOString().split('T')[0]}.json`;
+  link.click();
+};</code></pre>
+          </div>
+
+          <h3>3.3 Backup Reminder System</h3>
+          <p>
+            To prevent data loss, Luna implements an intelligent reminder system that prompts users
+            to backup their data periodically, with options to dismiss, snooze, or backup immediately.
+          </p>
+        </section>
+
+        <!-- Section 4: Visualization -->
+        <section id="visualization" class="article-section">
+          <h2>4. Data Visualization</h2>
+
+          <p>
+            Financial insights are presented through interactive charts powered by Recharts:
+          </p>
+
+          <h3>4.1 Chart Components</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">AppPieChart.tsx</span>
+            </div>
+            <pre><code>const AppPieChart: React.FC&lt;AppPieChartProps&gt; = ({ data, title }) => {
+  if (!data || data.length === 0) {
+    return &lt;div className="text-center py-10"&gt;
+      {title ? `${title}: ` : ''}Sem dados para exibir.
+    &lt;/div&gt;;
+  }
+
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius,
+    outerRadius, percent, name }) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return percent > 0.05 ? (
+      &lt;text x={x} y={y} textAnchor="middle"&gt;
+        {`${(percent * 100).toFixed(0)}%`}
+      &lt;/text&gt;
+    ) : null;
+  };
+  // ...
+};</code></pre>
+          </div>
+
+          <h3>4.2 Dashboard Metrics</h3>
+          <p>
+            The dashboard provides real-time financial health indicators:
+          </p>
+          <ul>
+            <li><strong>Balance Display:</strong> Total across all cash accounts with color-coded positive/negative</li>
+            <li><strong>Expense Distribution:</strong> Pie chart breakdown by category</li>
+            <li><strong>Balance Evolution:</strong> Line chart showing historical trends</li>
+            <li><strong>Credit Card Usage:</strong> Current billing cycle spending vs. limits</li>
+          </ul>
+
+          <div class="info-box">
+            <h4>Visualization Library: Recharts</h4>
+            <p>
+              Recharts was selected for its React-native approach, composable components, and
+              excellent TypeScript support. The library enables responsive charts that adapt
+              to container dimensions automatically.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 5: Simulation -->
+        <section id="simulation" class="article-section">
+          <h2>5. Financial Simulation Engine</h2>
+
+          <p>
+            Luna includes a sophisticated projection system for long-term financial planning:
+          </p>
+
+          <h3>5.1 Simulation Parameters</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">types.ts</span>
+            </div>
+            <pre><code>export interface SimulationParams {
+  initialBalance: number;
+  monthlyIncome: number;
+  monthlyExpenses: number;
+  investmentReturnRate: number;  // Annual percentage
+  incomeGrowthRate: number;      // Annual percentage
+  expenseGrowthRate: number;     // Annual percentage
+  simulationYears: number;
+}
+
+export interface ProjectedDataPoint {
+  year: number;
+  balance: number;
+  income: number;
+  expenses: number;
+  investmentsValue: number;
+}</code></pre>
+          </div>
+
+          <h3>5.2 Projection Algorithm</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">TypeScript</span>
+              <span class="code-file">financeService.ts</span>
+            </div>
+            <pre><code>export const runFinancialSimulation = (
+  params: SimulationParams
+): SimulationResult => {
+  const projection: ProjectedDataPoint[] = [];
+  let currentYearInvestments = params.initialBalance;
+  let annualIncome = params.monthlyIncome * 12;
+  let annualExpenses = params.monthlyExpenses * 12;
+
+  for (let year = 1; year <= params.simulationYears; year++) {
+    if (year > 1) {
+      annualIncome *= (1 + params.incomeGrowthRate / 100);
+      annualExpenses *= (1 + params.expenseGrowthRate / 100);
+    }
+
+    const annualSavings = annualIncome - annualExpenses;
+
+    // Apply investment returns on existing balance
+    currentYearInvestments *= (1 + params.investmentReturnRate / 100);
+
+    // Add new savings (or subtract deficit)
+    currentYearInvestments += annualSavings;
+
+    projection.push({
+      year: new Date().getFullYear() + year - 1,
+      balance: currentYearInvestments,
+      income: annualIncome,
+      expenses: annualExpenses,
+      investmentsValue: currentYearInvestments
+    });
+  }
+
+  return { projection, finalBalance, totalGrowthPercentage };
+};</code></pre>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge: Compound Interest Accuracy</h4>
+            <p>
+              Simple annual compounding doesn't reflect real-world investment behavior where
+              returns compound more frequently.
+            </p>
+            <div class="solution">
+              <strong>Consideration:</strong> The current implementation uses annual compounding
+              for simplicity. Future iterations could implement monthly compounding with
+              <code>rate / 12</code> applied 12 times per simulation year for greater accuracy.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: Theming -->
+        <section id="theming" class="article-section">
+          <h2>6. Dynamic Theming System</h2>
+
+          <p>
+            Luna features an extensive theming system allowing complete visual customization:
+          </p>
+
+          <h3>6.1 CSS Custom Properties</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-language">CSS</span>
+              <span class="code-file">index.html (inline styles)</span>
+            </div>
+            <pre><code>:root {
+  --color-primary: #8B5CF6;           /* purple-500 */
+  --color-primary-hover: #7C3AED;     /* purple-600 */
+  --color-accent: #EC4899;            /* pink-500 */
+  --app-background: #0f172a;          /* slate-900 */
+  --color-text-base: #e2e8f0;         /* slate-200 */
+  --color-text-muted: #94a3b8;        /* slate-400 */
+  --color-surface: #252830;
+  /* ... 40+ customizable properties */
+}</code></pre>
+          </div>
+
+          <h3>6.2 Predefined Themes</h3>
+          <p>
+            The application includes several curated themes:
+          </p>
+          <ul>
+            <li><strong>Luna Padrão:</strong> Purple/pink gradient on dark slate</li>
+            <li><strong>Aurora Boreal:</strong> Cyan and magenta on deep blue</li>
+            <li><strong>Minimalist Light:</strong> Subtle grays for light mode preference</li>
+          </ul>
+
+          <h3>6.3 Custom Background Images</h3>
+          <p>
+            Users can upload custom background images, converted to Base64 and stored
+            in localStorage alongside theme settings. Image optimization guidelines
+            (&lt;500KB) help maintain performance.
+          </p>
+
+          <div class="info-box">
+            <h4>Real-Time Preview</h4>
+            <p>
+              Theme changes are previewed in real-time through a dedicated preview component
+              that renders UI samples with the current color configuration, allowing users
+              to see changes before applying them.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 7: Challenges -->
+        <section id="challenges" class="article-section">
+          <h2>7. Technical Challenges Encountered</h2>
+
+          <div class="challenge-box">
+            <h4>Challenge: LocalStorage Size Management</h4>
+            <p>
+              Users with extensive transaction histories could approach storage limits,
+              causing silent failures on save operations.
+            </p>
+            <div class="solution">
+              <strong>Solution:</strong> Implemented storage usage monitoring with proactive
+              warnings at 80% capacity. Added data archival suggestions for older transactions.
+            </div>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge: Mobile Responsiveness</h4>
+            <p>
+              Complex financial dashboards with multiple charts and data tables don't
+              naturally adapt to small screens.
+            </p>
+            <div class="solution">
+              <strong>Solution:</strong> Implemented a dedicated mobile navigation system
+              with collapsible sidebars and stacked layouts. Charts resize responsively
+              using Recharts' ResponsiveContainer component.
+            </div>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge: Floating-Point Precision</h4>
+            <p>
+              JavaScript's floating-point arithmetic can cause subtle errors in financial
+              calculations (e.g., 0.1 + 0.2 ≠ 0.3).
+            </p>
+            <div class="solution">
+              <strong>Solution:</strong> Applied fixed decimal formatting on display with
+              <code>toLocaleString('pt-BR', { minimumFractionDigits: 2 })</code> and
+              considered integer-based storage (cents) for future iterations.
+            </div>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge: Chart Performance with Large Datasets</h4>
+            <p>
+              Rendering thousands of data points caused noticeable lag and degraded user experience.
+            </p>
+            <div class="solution">
+              <strong>Solution:</strong> Implemented data aggregation for long time periods,
+              showing monthly summaries instead of individual transactions when viewing
+              yearly trends.
+            </div>
+          </div>
+        </section>
+
+        <!-- References -->
+        <section id="references" class="article-section references">
+          <h2>References</h2>
+          <ol class="reference-list">
+            <li>
+              <cite>Kleppmann, M. (2017). Designing Data-Intensive Applications.</cite>
+              O'Reilly Media. ISBN: 978-1449373320
+            </li>
+            <li>
+              <cite>MDN Web Docs. (2024). Web Storage API.</cite>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API</a>
+            </li>
+            <li>
+              <cite>Recharts Team. (2024). Recharts Documentation.</cite>
+              <a href="https://recharts.org/en-US/" target="_blank" rel="noopener">https://recharts.org/en-US/</a>
+            </li>
+            <li>
+              <cite>Bodie, Z., Kane, A., & Marcus, A. (2021). Investments (12th ed.).</cite>
+              McGraw-Hill Education. ISBN: 978-1260013832
+            </li>
+            <li>
+              <cite>React Team. (2024). React Documentation: State and Lifecycle.</cite>
+              <a href="https://react.dev/learn/state-a-components-memory" target="_blank" rel="noopener">https://react.dev/learn/state-a-components-memory</a>
+            </li>
+            <li>
+              <cite>W3C. (2023). CSS Custom Properties for Cascading Variables.</cite>
+              <a href="https://www.w3.org/TR/css-variables-1/" target="_blank" rel="noopener">https://www.w3.org/TR/css-variables-1/</a>
+            </li>
+            <li>
+              <cite>Goldberg, D. (1991). What Every Computer Scientist Should Know About Floating-Point Arithmetic.</cite>
+              ACM Computing Surveys, 23(1), 5-48.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Project Links -->
+        <section class="article-section project-links-section">
+          <h2>Project Resources</h2>
+          <div class="project-buttons">
+            <a href="https://github.com/leomoreiraa/Luna" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              GitHub Repository
+            </a>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <h2>DevLeo</h2>
+            <p class="footer-tagline">Desenvolvedor Full Stack apaixonado por criar solucoes digitais que fazem a diferenca.</p>
+          </div>
+          <div class="footer-nav">
+            <h3>Navegacao</h3>
+            <div class="footer-links">
+              <a href="../index.html#home">Home</a>
+              <a href="../index.html#about">Sobre</a>
+              <a href="../index.html#projects">Projetos</a>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <h3>Conecte-se</h3>
+            <div class="footer-social">
+              <a href="https://github.com/leomoreiraa" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/leomoreiraa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://www.instagram.com/leodev.arruda" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">2025 Leonardo Moreira. Todos os direitos reservados.</p>
+          <p class="footer-location">Sao Paulo, Brasil</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Menu Trigger Area -->
+    <div class="menu-trigger"></div>
+
+    <script>
+      (function() {
+        const menu = document.getElementById('menu');
+        const trigger = document.querySelector('.menu-trigger');
+        let lastScrollY = 0;
+        let ticking = false;
+
+        function updateMenu() {
+          const currentScrollY = window.scrollY;
+
+          if (currentScrollY > 100) {
+            menu.classList.add('menu-hidden');
+          } else {
+            menu.classList.remove('menu-hidden');
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            requestAnimationFrame(updateMenu);
+            ticking = true;
+          }
+        });
+
+        // Show menu on hover
+        trigger.addEventListener('mouseenter', function() {
+          menu.classList.remove('menu-hidden');
+        });
+
+        menu.addEventListener('mouseenter', function() {
+          menu.classList.remove('menu-hidden');
+        });
+
+        menu.addEventListener('mouseleave', function() {
+          if (window.scrollY > 100) {
+            menu.classList.add('menu-hidden');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
