@@ -1,8 +1,22 @@
 // ========== PROJECT DATA ==========
 const projects = {
     programming: [
-        { title: "Orbitir", description: "Orbitir is a kanban application", tags: ["Spring Boot", "Angular", "PostgreSQL"], link: "projects/orbitir.html" },
-        { title: "Luna", description: "Luna is a economy tracker for your personal life", tags: ["React", "TypeScript", "Vite"], link: "projects/luna.html" }
+        { 
+            title: "Orbitir", 
+            description: "Orbitir is a kanban application", 
+            fullDescription: "A comprehensive kanban board application built with Spring Boot and Angular. Features real-time collaboration, task management, and team coordination tools.",
+            tags: ["Spring Boot", "Angular", "PostgreSQL", "WebSocket"], 
+            link: "projects/orbitir.html",
+            image: "assets/images/proj4.png"
+        },
+        { 
+            title: "Luna", 
+            description: "Luna is a economy tracker for your personal life", 
+            fullDescription: "A privacy-focused personal finance tracker built with React and TypeScript. Helps you manage your budget, track expenses, and visualize your financial health.",
+            tags: ["React", "TypeScript", "Vite", "Chart.js"], 
+            link: "projects/luna.html",
+            image: "assets/images/proj5.png"
+        }
     ],
     science: [],
     references: []
@@ -10,7 +24,7 @@ const projects = {
 
 // Carousel functionality
 document.addEventListener('DOMContentLoaded', () => {
-  // Function to create a project card
+  // Function to create a project card for carousel
   function createProjectCard(project) {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
@@ -26,6 +40,39 @@ document.addEventListener('DOMContentLoaded', () => {
     
     slide.appendChild(card);
     return slide;
+  }
+  
+  // Function to create a project card for grid
+  function createGridProjectCard(project) {
+    const article = document.createElement('article');
+    article.className = 'project-item';
+    
+    const tagsHTML = project.tags.map(tag => 
+        `<span class="project-tag">${tag}</span>`
+    ).join('');
+    
+    article.innerHTML = `
+        <div class="project-image" style="background: linear-gradient(135deg, rgba(85, 107, 47, 0.8), rgba(107, 130, 57, 0.8)), url('${project.image}') center/cover;">
+            <div class="project-overlay">
+                <span>Ver Projeto</span>
+            </div>
+        </div>
+        <div class="project-info">
+            <h3>${project.title}</h3>
+            <p>${project.fullDescription || project.description}</p>
+            <div class="project-tags">
+                ${tagsHTML}
+            </div>
+        </div>
+    `;
+    
+    article.addEventListener('click', () => {
+        window.location.href = project.link;
+    });
+    
+    article.style.cursor = 'pointer';
+    
+    return article;
   }
   
   // Populate carousels
@@ -47,6 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+  // Populate projects grid section
+  const projectsGrid = document.getElementById('projects-grid');
+  if (projectsGrid) {
+    const allProjects = [...projects.programming, ...projects.science, ...projects.references];
+    allProjects.forEach(project => {
+      projectsGrid.appendChild(createGridProjectCard(project));
+    });
+  }
+  
   // Setup carousel navigation
   const carousels = ['programming', 'science', 'references', 'all'];
   
@@ -62,27 +118,63 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slides.length === 0) return;
     
     let currentIndex = 0;
+    let autoplayInterval;
     
     function updateCarousel() {
       const slideWidth = slides[0].offsetWidth;
       track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
     
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop back to start
+      }
+      updateCarousel();
+    }
+    
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = slides.length - 1; // Loop to end
+      }
+      updateCarousel();
+    }
+    
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+    
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+    
+    // Start autoplay
+    if (slides.length > 1) {
+      startAutoplay();
+    }
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', () => {
+      if (slides.length > 1) startAutoplay();
+    });
+    
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarousel();
-        }
+        stopAutoplay();
+        prevSlide();
+        if (slides.length > 1) startAutoplay();
       });
     }
     
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        if (currentIndex < slides.length - 1) {
-          currentIndex++;
-          updateCarousel();
-        }
+        stopAutoplay();
+        nextSlide();
+        if (slides.length > 1) startAutoplay();
       });
     }
   });
