@@ -5,8 +5,8 @@ const projects = {
     programming: [
         // Example format:
         // { title: "Project Name", description: "Short description", tags: ["Tech1", "Tech2"], link: "projects/project-name.html" }
-        { title: "Orbitir", description: "Orbitir is a kanban application", tags: ["Spring Boot", "Angular", "PostgreSQL"], link: "../html/projects/orbitir.html" },
-        { title: "Luna", description: "Luna is a economy tracker for your personal life", tags: ["React", "TypeScript", "Vite"], link: "../html/projects/luna.html" }
+        { title: "Orbitir", description: "Orbitir is a kanban application", tags: ["Spring Boot", "Angular", "PostgreSQL"], link: "../Html/projects/orbitir.html" },
+        { title: "Luna", description: "Luna is a economy tracker for your personal life", tags: ["React", "TypeScript", "Vite"], link: "../Html/projects/luna.html" }
     ],
     science: [
         // Example format:
