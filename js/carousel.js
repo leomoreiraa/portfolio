@@ -19,57 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
     card.href = project.link;
     card.className = 'project-card clickable';
     
-    const tagsHTML = project.tags.map(tag => 
-        `<span class="tech-tag">${tag}</span>`
-    ).join('');
-    
     card.innerHTML = `
         <h4>${project.title}</h4>
         <p>${project.description}</p>
-        <div class="project-tags">${tagsHTML}</div>
     `;
     
     slide.appendChild(card);
     return slide;
   }
   
-  // Populate programming carousel
-  const programmingTrack = document.querySelector('#carousel-programming .carousel-track');
-  if (programmingTrack && projects.programming.length > 0) {
-      projects.programming.forEach(project => {
-          programmingTrack.appendChild(createProjectCard(project));
-      });
-  }
+  // Populate carousels
+  const carouselData = {
+    'programming': projects.programming,
+    'science': projects.science,
+    'references': projects.references,
+    'all': [...projects.programming, ...projects.science, ...projects.references]
+  };
   
-  // Populate science carousel
-  const scienceTrack = document.querySelector('#carousel-science .carousel-track');
-  if (scienceTrack && projects.science.length > 0) {
-      projects.science.forEach(project => {
-          scienceTrack.appendChild(createProjectCard(project));
+  Object.keys(carouselData).forEach(carouselId => {
+    const track = document.querySelector(`#carousel-${carouselId} .carousel-track`);
+    const carouselProjects = carouselData[carouselId];
+    
+    if (track && carouselProjects.length > 0) {
+      carouselProjects.forEach(project => {
+        track.appendChild(createProjectCard(project));
       });
-  }
-  
-  // Populate references carousel
-  const referencesTrack = document.querySelector('#carousel-references .carousel-track');
-  if (referencesTrack && projects.references.length > 0) {
-      projects.references.forEach(project => {
-          referencesTrack.appendChild(createProjectCard(project));
-      });
-  }
-  
-  // Populate "all" carousel (mobile) with all projects
-  const allTrack = document.querySelector('#carousel-all .carousel-track');
-  if (allTrack) {
-      const allProjects = [
-          ...projects.programming,
-          ...projects.science,
-          ...projects.references
-      ];
-      
-      allProjects.forEach(project => {
-          allTrack.appendChild(createProjectCard(project));
-      });
-  }
+    }
+  });
   
   // Setup carousel navigation
   const carousels = ['programming', 'science', 'references', 'all'];
@@ -79,18 +55,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!carousel) return;
     
     const track = carousel.querySelector('.carousel-track');
+    const slides = track.querySelectorAll('.carousel-slide');
     const prevBtn = carousel.parentElement.querySelector(`.carousel-btn.prev[data-carousel="${carouselId}"]`);
     const nextBtn = carousel.parentElement.querySelector(`.carousel-btn.next[data-carousel="${carouselId}"]`);
     
+    if (slides.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    function updateCarousel() {
+      const slideWidth = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+    
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -300, behavior: 'smooth' });
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
       });
     }
     
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: 300, behavior: 'smooth' });
+        if (currentIndex < slides.length - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
       });
     }
   });
