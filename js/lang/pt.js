@@ -6,7 +6,7 @@ const pt = {
   },
   home: {
     title: "Bem-vindo ao DevLeo",
-    description: "DevLeo é uma iniciativa pessoal dedicada a compartilhar projetos, ideias e pesquisas de forma clara, expressiva e didática.",
+    description: "DevLeo é uma iniciativa pessoal dedicada a compartilhar projetos, ideias e pesquisas de forma clara, expressiva e didática. Embora sua estrutura se assemelhe à de uma revista digital, seu propósito vai além da simples publicação, servindo como um espaço para documentação contínua, reflexão e experimentação. A plataforma reúne projetos de desenvolvimento de software, estudos técnicos e trabalhos orientados à pesquisa, apresentando não apenas os resultados finais, mas também os processos, desafios e decisões envolvidas em cada iniciativa. Ao combinar desenvolvimento prático com abordagens analíticas e investigativas, DevLeo busca preencher a lacuna entre implementação e compreensão. Por meio de artigos, showcases de projetos e notas técnicas, o site visa promover o compartilhamento de conhecimento, incentivar o pensamento crítico e fornecer uma visão transparente da aprendizagem e exploração contínuas em diferentes áreas da tecnologia e ciência.",
     btn: "Ver Projetos"
   },
   carousel: {
@@ -15,8 +15,8 @@ const pt = {
     references: "Referências"
   },
   about: {
-    title: "Sobre Leo",
-    description: "Olá, sou o Leo. Sou estudante universitário de Física e Ciência da Computação."
+    title: "Sobre o Leo",
+    description: "Olá, sou o Leo. Sou estudante universitário de Física e Ciência da Computação, com forte interesse tanto em fundamentos teóricos quanto em aplicações práticas. Nos últimos dois anos, tenho trabalhado como instrutor, ensinando robótica e programação, além de desenvolver soluções de software para pequenas e médias empresas. Sou profundamente apaixonado por aprendizagem e melhoria contínua. Atualmente, estou estudando mandarim com o objetivo de obter a certificação HSK (Hanyu Shuiping Kaoshi), expandindo ainda mais meus horizontes acadêmicos e culturais."
   },
   projects: {
     title: "Projetos"
