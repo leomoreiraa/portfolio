@@ -2,7 +2,8 @@
   "nav": {
     "home": "Início",
     "about": "Sobre",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "skip": "Pular para o conteúdo"
   },
   "home": {
     "title": "Bem-vindo ao DevLeo",
@@ -12,14 +13,26 @@
   "carousel": {
     "programming": "Programação",
     "science": "Ciência",
-    "references": "Referências"
+    "references": "Referências",
+    "empty": "Nenhum projeto publicado ainda.",
+    "previous": "Projeto anterior",
+    "next": "Próximo projeto"
   },
   "about": {
     "title": "Sobre o Leo",
     "description": "Olá, sou o Leo. Sou estudante universitário de Física e Ciência da Computação, com forte interesse tanto em fundamentos teóricos quanto em aplicações práticas. Nos últimos dois anos, tenho trabalhado como instrutor, ensinando robótica e programação, além de desenvolver soluções de software para pequenas e médias empresas. Sou profundamente apaixonado por aprendizagem e melhoria contínua. Atualmente, estou estudando mandarim com o objetivo de obter a certificação HSK (Hanyu Shuiping Kaoshi), expandindo ainda mais meus horizontes acadêmicos e culturais."
   },
   "projects": {
-    "title": "Projetos"
+    "title": "Projetos",
+    "view": "Ver Projeto",
+    "orbitir": {
+      "description": "Uma aplicação Kanban colaborativa.",
+      "fullDescription": "Uma aplicação de quadros Kanban desenvolvida com Spring Boot e Angular, com colaboração em tempo real, gerenciamento de tarefas e coordenação de equipes."
+    },
+    "luna": {
+      "description": "Um gerenciador de finanças pessoais focado em privacidade.",
+      "fullDescription": "Um gerenciador de finanças pessoais desenvolvido com React e TypeScript. Organize orçamentos, acompanhe despesas e visualize suas finanças com os dados armazenados localmente no navegador."
+    }
   },
   "footer": {
     "tagline": "Desenvolvedor Full Stack apaixonado por criar soluções digitais que fazem a diferença.",

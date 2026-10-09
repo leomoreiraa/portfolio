@@ -1,9 +1,11 @@
 const translations = {
   en: en,
   pt: pt,
-  zh: zh
+  zh: zh,
 };
 
 function getTranslation(lang) {
-  return translations[lang] || translations['en'];
+  return Object.hasOwn(translations, lang)
+    ? translations[lang]
+    : translations.en;
 }

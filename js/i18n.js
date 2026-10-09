@@ -1,60 +1,61 @@
-// i18n functionality
-let currentLanguage = 'en';
+let currentLanguage = "en";
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Get saved language or default
-  const savedLang = localStorage.getItem('language');
-  if (savedLang && translations[savedLang]) {
-    currentLanguage = savedLang;
-  } else {
-    const browserLang = navigator.language.split('-')[0];
-    if (translations[browserLang]) {
-      currentLanguage = browserLang;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  let savedLanguage;
+  try {
+    savedLanguage = localStorage.getItem("language");
+  } catch {
+    // Language switching also works when browser storage is unavailable.
   }
-  
-  setLanguage(currentLanguage);
-  setupLanguageButtons();
+
+  const browserLanguages = navigator.languages || [navigator.language];
+  const preferredLanguage = browserLanguages
+    .map((language) => language.toLowerCase().split("-")[0])
+    .find((language) => Object.hasOwn(translations, language));
+
+  setLanguage(
+    Object.hasOwn(translations, savedLanguage)
+      ? savedLanguage
+      : preferredLanguage || "en",
+  );
+
+  document.querySelectorAll(".lang-btn").forEach((button) => {
+    button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  });
 });
 
-function setupLanguageButtons() {
-  const langButtons = document.querySelectorAll('.lang-btn');
-  
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      setLanguage(lang);
-    });
-  });
-}
+function setLanguage(language) {
+  if (!Object.hasOwn(translations, language)) return;
 
-function setLanguage(lang) {
-  if (!translations[lang]) return;
-  
-  currentLanguage = lang;
-  localStorage.setItem('language', lang);
-  
-  // Update active button
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  currentLanguage = language;
+  document.documentElement.lang = language;
+  try {
+    localStorage.setItem("language", language);
+  } catch {
+    // Keep the selected language for this page even if it cannot be saved.
+  }
+
+  document.querySelectorAll(".lang-btn").forEach((button) => {
+    const active = button.dataset.lang === language;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
-  
-  // Update all translatable elements
+
   updateTranslations();
 }
 
 function updateTranslations() {
-  const trans = getTranslation(currentLanguage);
-  
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    const value = getNestedValue(trans, key);
-    if (value) {
-      element.textContent = value;
-    }
+  const translation = getTranslation(currentLanguage);
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const value = getNestedValue(translation, element.dataset.i18n);
+    if (typeof value === "string") element.textContent = value;
+  });
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+    const value = getNestedValue(translation, element.dataset.i18nAriaLabel);
+    if (typeof value === "string") element.setAttribute("aria-label", value);
   });
 }
 
-function getNestedValue(obj, path) {
-  return path.split('.').reduce((current, key) => current?.[key], obj);
+function getNestedValue(object, path) {
+  return path.split(".").reduce((value, key) => value?.[key], object);
 }

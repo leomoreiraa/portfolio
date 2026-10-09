@@ -2,7 +2,8 @@
   "nav": {
     "home": "首页",
     "about": "关于",
-    "projects": "项目"
+    "projects": "项目",
+    "skip": "跳转到主要内容"
   },
   "home": {
     "title": "欢迎来到DevLeo",
@@ -12,14 +13,26 @@
   "carousel": {
     "programming": "编程",
     "science": "科学",
-    "references": "参考文献"
+    "references": "参考文献",
+    "empty": "暂无已发布的项目。",
+    "previous": "上一个项目",
+    "next": "下一个项目"
   },
   "about": {
     "title": "关于Leo",
     "description": "你好，我是Leo。我是物理和计算机科学的大学生，对理论基础和实际应用都有浓厚的兴趣。在过去的两年里，我一直担任讲师，教授机器人和编程，同时为中小型企业开发软件解决方案。我对学习和持续改进充满热情。目前，我正在学习普通话，目标是获得HSK（汉语水平考试）认证，进一步拓展我的学术和文化视野。"
   },
   "projects": {
-    "title": "项目"
+    "title": "项目",
+    "view": "查看项目",
+    "orbitir": {
+      "description": "一款支持协作的看板应用。",
+      "fullDescription": "使用 Spring Boot 和 Angular 构建的看板应用，支持实时协作、任务管理和团队协调。"
+    },
+    "luna": {
+      "description": "一款注重隐私的个人财务管理应用。",
+      "fullDescription": "使用 React 和 TypeScript 构建的个人财务管理应用。管理预算、跟踪支出并可视化财务状况，所有数据均存储在本地浏览器中。"
+    }
   },
   "footer": {
     "tagline": "热衷于创建有影响力的数字解决方案的全栈开发者。",

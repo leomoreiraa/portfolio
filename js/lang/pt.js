@@ -2,30 +2,48 @@ const pt = {
   nav: {
     home: "Início",
     about: "Sobre",
-    projects: "Projetos"
+    projects: "Projetos",
+    skip: "Pular para o conteúdo",
   },
   home: {
     title: "Bem-vindo ao DevLeo",
-    description: "DevLeo é uma iniciativa pessoal dedicada a compartilhar projetos, ideias e pesquisas de forma clara, expressiva e didática. Embora sua estrutura se assemelhe à de uma revista digital, seu propósito vai além da simples publicação, servindo como um espaço para documentação contínua, reflexão e experimentação. A plataforma reúne projetos de desenvolvimento de software, estudos técnicos e trabalhos orientados à pesquisa, apresentando não apenas os resultados finais, mas também os processos, desafios e decisões envolvidas em cada iniciativa. Ao combinar desenvolvimento prático com abordagens analíticas e investigativas, DevLeo busca preencher a lacuna entre implementação e compreensão. Por meio de artigos, showcases de projetos e notas técnicas, o site visa promover o compartilhamento de conhecimento, incentivar o pensamento crítico e fornecer uma visão transparente da aprendizagem e exploração contínuas em diferentes áreas da tecnologia e ciência.",
-    btn: "Ver Projetos"
+    description:
+      "DevLeo é uma iniciativa pessoal dedicada a compartilhar projetos, ideias e pesquisas de forma clara, expressiva e didática. Embora sua estrutura se assemelhe à de uma revista digital, seu propósito vai além da simples publicação, servindo como um espaço para documentação contínua, reflexão e experimentação. A plataforma reúne projetos de desenvolvimento de software, estudos técnicos e trabalhos orientados à pesquisa, apresentando não apenas os resultados finais, mas também os processos, desafios e decisões envolvidas em cada iniciativa. Ao combinar desenvolvimento prático com abordagens analíticas e investigativas, DevLeo busca preencher a lacuna entre implementação e compreensão. Por meio de artigos, showcases de projetos e notas técnicas, o site visa promover o compartilhamento de conhecimento, incentivar o pensamento crítico e fornecer uma visão transparente da aprendizagem e exploração contínuas em diferentes áreas da tecnologia e ciência.",
+    btn: "Ver Projetos",
   },
   carousel: {
     programming: "Programação",
     science: "Ciência",
-    references: "Referências"
+    references: "Referências",
+    empty: "Nenhum projeto publicado ainda.",
+    previous: "Projeto anterior",
+    next: "Próximo projeto",
   },
   about: {
     title: "Sobre o Leo",
-    description: "Olá, sou o Leo. Sou estudante universitário de Física e Ciência da Computação, com forte interesse tanto em fundamentos teóricos quanto em aplicações práticas. Nos últimos dois anos, tenho trabalhado como instrutor, ensinando robótica e programação, além de desenvolver soluções de software para pequenas e médias empresas. Sou profundamente apaixonado por aprendizagem e melhoria contínua. Atualmente, estou estudando mandarim com o objetivo de obter a certificação HSK (Hanyu Shuiping Kaoshi), expandindo ainda mais meus horizontes acadêmicos e culturais."
+    description:
+      "Olá, sou o Leo. Sou estudante universitário de Física e Ciência da Computação, com forte interesse tanto em fundamentos teóricos quanto em aplicações práticas. Nos últimos dois anos, tenho trabalhado como instrutor, ensinando robótica e programação, além de desenvolver soluções de software para pequenas e médias empresas. Sou profundamente apaixonado por aprendizagem e melhoria contínua. Atualmente, estou estudando mandarim com o objetivo de obter a certificação HSK (Hanyu Shuiping Kaoshi), expandindo ainda mais meus horizontes acadêmicos e culturais.",
   },
   projects: {
-    title: "Projetos"
+    title: "Projetos",
+    view: "Ver Projeto",
+    orbitir: {
+      description: "Uma aplicação Kanban colaborativa.",
+      fullDescription:
+        "Uma aplicação de quadros Kanban desenvolvida com Spring Boot e Angular, com colaboração em tempo real, gerenciamento de tarefas e coordenação de equipes.",
+    },
+    luna: {
+      description: "Um gerenciador de finanças pessoais focado em privacidade.",
+      fullDescription:
+        "Um gerenciador de finanças pessoais desenvolvido com React e TypeScript. Organize orçamentos, acompanhe despesas e visualize suas finanças com os dados armazenados localmente no navegador.",
+    },
   },
   footer: {
-    tagline: "Desenvolvedor Full Stack apaixonado por criar soluções digitais que fazem a diferença.",
+    tagline:
+      "Desenvolvedor Full Stack apaixonado por criar soluções digitais que fazem a diferença.",
     navigation: "Navegação",
     connect: "Conecte-se",
     copyright: "2025 Leonardo Moreira. Todos os direitos reservados.",
-    location: "São Paulo, Brasil"
-  }
+    location: "São Paulo, Brasil",
+  },
 };

@@ -1,181 +1,149 @@
-// ========== PROJECT DATA ==========
-const projects = {
-    programming: [
-        { 
-            title: "Orbitir", 
-            description: "Orbitir is a kanban application", 
-            fullDescription: "A comprehensive kanban board application built with Spring Boot and Angular. Features real-time collaboration, task management, and team coordination tools.",
-            tags: ["Spring Boot", "Angular", "PostgreSQL", "WebSocket"], 
-            link: "projects/orbitir.html",
-            image: "assets/images/proj4.png"
-        },
-        { 
-            title: "Luna", 
-            description: "Luna is a economy tracker for your personal life", 
-            fullDescription: "A privacy-focused personal finance tracker built with React and TypeScript. Helps you manage your budget, track expenses, and visualize your financial health.",
-            tags: ["React", "TypeScript", "Vite", "Chart.js"], 
-            link: "projects/luna.html",
-            image: "assets/images/proj5.png"
-        }
-    ],
-    science: [],
-    references: []
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const allProjects = Object.values(projects).flat();
 
-// Carousel functionality
-document.addEventListener('DOMContentLoaded', () => {
-  // Function to create a project card for carousel
+  function translatedElement(tag, key) {
+    const element = document.createElement(tag);
+    element.dataset.i18n = key;
+    element.textContent = getNestedValue(getTranslation("en"), key) || "";
+    return element;
+  }
+
   function createProjectCard(project) {
-    const slide = document.createElement('div');
-    slide.className = 'carousel-slide';
-    
-    const card = document.createElement('a');
+    const slide = document.createElement("div");
+    slide.className = "carousel-slide";
+    slide.setAttribute("role", "group");
+    slide.setAttribute("aria-label", project.title);
+
+    const card = document.createElement("a");
     card.href = project.link;
-    card.className = 'project-card clickable';
-    
-    card.innerHTML = `
-        <h4>${project.title}</h4>
-        <p>${project.description}</p>
-    `;
-    
-    slide.appendChild(card);
+    card.className = "project-card clickable";
+
+    const title = document.createElement("h4");
+    title.textContent = project.title;
+    card.append(
+      title,
+      translatedElement("p", `projects.${project.id}.description`),
+    );
+    slide.append(card);
     return slide;
   }
-  
-  // Function to create a project card for grid
+
   function createGridProjectCard(project) {
-    const article = document.createElement('article');
-    article.className = 'project-item';
-    
-    const tagsHTML = project.tags.map(tag => 
-        `<span class="project-tag">${tag}</span>`
-    ).join('');
-    
-    article.innerHTML = `
-        <div class="project-image" style="background: linear-gradient(135deg, rgba(85, 107, 47, 0.8), rgba(107, 130, 57, 0.8)), url('${project.image}') center/cover;">
-            <div class="project-overlay">
-                <span>Ver Projeto</span>
-            </div>
-        </div>
-        <div class="project-info">
-            <h3>${project.title}</h3>
-            <p>${project.fullDescription || project.description}</p>
-            <div class="project-tags">
-                ${tagsHTML}
-            </div>
-        </div>
-    `;
-    
-    article.addEventListener('click', () => {
-        window.location.href = project.link;
+    const card = document.createElement("a");
+    card.className = "project-item";
+    card.href = project.link;
+
+    const image = document.createElement("div");
+    image.className = `project-image ${project.id}-theme`;
+    const label = document.createElement("span");
+    label.className = "project-image-title";
+    label.textContent = project.title;
+    label.setAttribute("aria-hidden", "true");
+    const overlay = document.createElement("div");
+    overlay.className = "project-overlay";
+    overlay.append(translatedElement("span", "projects.view"));
+    image.append(label, overlay);
+
+    const info = document.createElement("div");
+    info.className = "project-info";
+    const title = document.createElement("h3");
+    title.textContent = project.title;
+    const tags = document.createElement("div");
+    tags.className = "project-tags";
+    project.tags.forEach((tag) => {
+      const badge = document.createElement("span");
+      badge.className = "project-tag";
+      badge.textContent = tag;
+      tags.append(badge);
     });
-    
-    article.style.cursor = 'pointer';
-    
-    return article;
+    info.append(
+      title,
+      translatedElement("p", `projects.${project.id}.fullDescription`),
+      tags,
+    );
+    card.append(image, info);
+    return card;
   }
-  
-  // Populate carousels
-  const carouselData = {
-    'programming': projects.programming,
-    'science': projects.science,
-    'references': projects.references,
-    'all': [...projects.programming, ...projects.science, ...projects.references]
-  };
-  
-  Object.keys(carouselData).forEach(carouselId => {
-    const track = document.querySelector(`#carousel-${carouselId} .carousel-track`);
-    const carouselProjects = carouselData[carouselId];
-    
-    if (track && carouselProjects.length > 0) {
-      carouselProjects.forEach(project => {
-        track.appendChild(createProjectCard(project));
-      });
-    }
-  });
-  
-  // Populate projects grid section
-  const projectsGrid = document.getElementById('projects-grid');
+
+  const projectsGrid = document.getElementById("projects-grid");
   if (projectsGrid) {
-    const allProjects = [...projects.programming, ...projects.science, ...projects.references];
-    allProjects.forEach(project => {
-      projectsGrid.appendChild(createGridProjectCard(project));
-    });
+    if (allProjects.length) {
+      projectsGrid.replaceChildren(...allProjects.map(createGridProjectCard));
+    } else {
+      const empty = translatedElement("p", "carousel.empty");
+      empty.className = "no-projects";
+      projectsGrid.replaceChildren(empty);
+    }
   }
-  
-  // Setup carousel navigation
-  const carousels = ['programming', 'science', 'references', 'all'];
-  
-  carousels.forEach(carouselId => {
-    const carousel = document.getElementById(`carousel-${carouselId}`);
+
+  const carouselData = { ...projects, all: allProjects };
+  Object.entries(carouselData).forEach(([id, items]) => {
+    const carousel = document.getElementById(`carousel-${id}`);
     if (!carousel) return;
-    
-    const track = carousel.querySelector('.carousel-track');
-    const slides = track.querySelectorAll('.carousel-slide');
-    const prevBtn = carousel.parentElement.querySelector(`.carousel-btn.prev[data-carousel="${carouselId}"]`);
-    const nextBtn = carousel.parentElement.querySelector(`.carousel-btn.next[data-carousel="${carouselId}"]`);
-    
-    if (slides.length === 0) return;
-    
+
+    const track = carousel.querySelector(".carousel-track");
+    const nav = carousel.querySelector(".carousel-nav");
+    const dotsContainer = carousel.querySelector(".carousel-dots");
+    const previous = carousel.querySelector(".prev");
+    const next = carousel.querySelector(".next");
+    if (!track || !nav || !dotsContainer || !previous || !next) return;
+
+    track.id = `track-${id}`;
+    track.setAttribute("aria-live", "polite");
+    nav.hidden = items.length < 2;
+    dotsContainer.replaceChildren();
+
+    if (!items.length) {
+      const empty = translatedElement("p", "carousel.empty");
+      empty.className = "project-card empty-card";
+      track.replaceChildren(empty);
+      return;
+    }
+
+    const slides = items.map(createProjectCard);
+    track.replaceChildren(...slides);
     let currentIndex = 0;
-    let autoplayInterval;
-    
-    function updateCarousel() {
-      const slideWidth = slides[0].offsetWidth;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-    
-    function nextSlide() {
-      if (currentIndex < slides.length - 1) {
-        currentIndex++;
-      } else {
-        currentIndex = 0; // Loop back to start
-      }
-      updateCarousel();
-    }
-    
-    function prevSlide() {
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = slides.length - 1; // Loop to end
-      }
-      updateCarousel();
-    }
-    
-    function startAutoplay() {
-      autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    }
-    
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
-    
-    // Start autoplay
-    if (slides.length > 1) {
-      startAutoplay();
-    }
-    
-    // Pause on hover
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', () => {
-      if (slides.length > 1) startAutoplay();
+    const dots = items.map((project, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute("aria-label", project.title);
+      dot.setAttribute("aria-controls", track.id);
+      dot.addEventListener("click", () => showSlide(index));
+      dotsContainer.append(dot);
+      return dot;
     });
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        stopAutoplay();
-        prevSlide();
-        if (slides.length > 1) startAutoplay();
+
+    function showSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      // Percentages stay aligned when the viewport or visible carousel changes.
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === currentIndex;
+        slide.inert = !active;
+        slide.setAttribute("aria-hidden", String(!active));
+        dots[slideIndex].classList.toggle("active", active);
+        dots[slideIndex].setAttribute("aria-current", String(active));
       });
     }
-    
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        stopAutoplay();
-        nextSlide();
-        if (slides.length > 1) startAutoplay();
-      });
-    }
+
+    [previous, next].forEach((button) => {
+      button.type = "button";
+      button.setAttribute("aria-controls", track.id);
+    });
+    previous.dataset.i18nAriaLabel = "carousel.previous";
+    next.dataset.i18nAriaLabel = "carousel.next";
+    previous.addEventListener("click", () => showSlide(currentIndex - 1));
+    next.addEventListener("click", () => showSlide(currentIndex + 1));
+
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const focusWasInSlide = track.contains(document.activeElement);
+      showSlide(currentIndex + (event.key === "ArrowRight" ? 1 : -1));
+      if (focusWasInSlide) slides[currentIndex].querySelector("a").focus();
+    });
+
+    showSlide(0);
   });
 });

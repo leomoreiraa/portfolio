@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects"
+    "projects": "Projects",
+    "skip": "Skip to content"
   },
   "home": {
     "title": "Welcome to DevLeo",
@@ -12,14 +13,26 @@
   "carousel": {
     "programming": "Programming",
     "science": "Science",
-    "references": "References"
+    "references": "References",
+    "empty": "No projects published yet.",
+    "previous": "Previous project",
+    "next": "Next project"
   },
   "about": {
     "title": "About Leo",
     "description": "Hello, I'm Leo. I am a university student in Physics and Computer Science, with a strong interest in both theoretical foundations and practical applications. For the past two years, I have been working as an instructor, teaching robotics and programming, while also developing software solutions for small and medium-sized businesses. I am deeply passionate about learning and continuous improvement. Currently, I am studying Mandarin with the goal of obtaining the HSK (Hanyu Shuiping Kaoshi) certification, further expanding my academic and cultural horizons."
   },
   "projects": {
-    "title": "Projects"
+    "title": "Projects",
+    "view": "View Project",
+    "orbitir": {
+      "description": "A collaborative Kanban application.",
+      "fullDescription": "A Kanban board application built with Spring Boot and Angular, featuring real-time collaboration, task management, and team coordination."
+    },
+    "luna": {
+      "description": "A personal finance tracker focused on privacy.",
+      "fullDescription": "A personal finance tracker built with React and TypeScript. Manage budgets, track expenses, and visualize your finances with data stored locally in your browser."
+    }
   },
   "footer": {
     "tagline": "Full Stack Developer passionate about creating digital solutions that make a difference.",
