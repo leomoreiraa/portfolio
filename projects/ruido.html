@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>RUÍDO — DevLeo Magazine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An independent Brazilian congressional transparency project that gathers and audits public legislative and economic records from official APIs."
+    />
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/magazine.css"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <!-- Menu -->
+    <header id="menu" class="menu">
+      <div class="logo">
+        <a href="../index.html" aria-label="DevLeo">
+          <img src="../assets/images/Logo.png" alt="" />
+          <span class="logo-name">DevLeo</span>
+        </a>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#articles">Articles</a>
+      </nav>
+    </header>
+
+    <!-- Magazine Article -->
+    <main id="main-content" tabindex="-1">
+      <article class="magazine-article">
+        <header class="article-hero">
+          <div class="hero-content">
+            <div class="article-meta">
+              <span class="category-badge">Civic technology / Open data</span>
+              <span class="reading-time">8 min read</span>
+            </div>
+            <h1 class="article-title">RUÍDO</h1>
+            <p class="article-subtitle">Building a public-data observatory for Brazilian politics: traceable legislative records, regional indicators, and a deliberately punk visual language.</p>
+            <div class="article-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Open Data</span>
+            </div>
+            <div class="article-author"><div class="author-info">
+              <span class="author-name">Leonardo Moreira</span>
+              <span class="publish-date">Published October 2026</span>
+            </div></div>
+          </div>
+        </header>
+        <div class="article-body">
+          <section class="article-section abstract">
+            <h2>Abstract</h2>
+            <p>RUÍDO (Radar Congresso) is an open-source civic technology project that consolidates records from the Brazilian Chamber of Deputies, Federal Senate, Portal da Transparência, IBGE and Banco Central. Its goal is to make official information easier to inspect while refusing to fill gaps with assumptions.</p>
+            <p><strong>Project status:</strong> Under active development and historical rebuild. Data coverage and live deployment must be checked on the project site.</p>
+          </section>
+          <nav class="table-of-contents" aria-labelledby="contents-title">
+            <h3 id="contents-title">Contents</h3>
+            <ol>
+              <li><a href="#motivation">Why a public-data project?</a></li>
+              <li><a href="#sources">The official-data pipeline</a></li>
+              <li><a href="#architecture">Architecture: collection without a public backend</a></li>
+              <li><a href="#history">Historical synchronization and checkpoints</a></li>
+              <li><a href="#interface">Public-facing analysis</a></li>
+              <li><a href="#limits">What this project cannot claim</a></li>
+              <li><a href="#design">Open source, visual identity and next steps</a></li>
+              <li><a href="#resources">Project resources</a></li>
+            </ol>
+          </nav>
+          <section id="motivation" class="article-section">
+            <h2>1. Why a public-data project?</h2>
+            <p>Brazil publishes a great deal of institutional data, but a citizen who wants to compare legislative votes, parliamentary records and public money still needs to navigate different sources with different formats and update cycles. RUÍDO began as an experiment in turning those scattered public records into something people can inspect.</p>
+            <blockquote><p>Transparency requires more than a dashboard: the data must be traceable to the source.</p><cite>— Design principle</cite></blockquote>
+            <p>The project uses an intentionally confrontational punk-collage identity, but its data rules should be conservative. It cannot claim an individual's vote when no individual record was published; it cannot turn a missing attendance record into a confirmed absence.</p>
+          </section>
+
+          <section id="sources" class="article-section">
+            <h2>2. The official-data pipeline</h2>
+            <p>Different institutions answer different questions. The <strong>Câmara dos Deputados</strong> and <strong>Senado Federal</strong> provide records of parliamentary activity, proposals and voting. The <strong>Portal da Transparência / CGU</strong> provides federal amendment data. The <strong>IBGE</strong> supplies regional population and economic statistics, while the <strong>Banco Central</strong> publishes financial series.</p>
+            <p>These are not interchangeable datasets. A credit stock at the central bank is not a federal investment, and an amendment paid to a location is not the same as that region's total budget expenditure. RUÍDO keeps those distinctions visible when combining indicators in the Brazil map.</p>
+            <div class="info-box"><h4>Data integrity rule</h4><p>Unknown is not zero. A missing individual vote is not an absence. A record that could not be safely matched to a politician remains unmatched rather than being forced onto a profile.</p></div>
+          </section>
+
+          <section id="architecture" class="article-section">
+            <h2>3. Architecture: collection without a public backend</h2>
+            <p>The application is developed with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Prisma</strong> and <strong>SQLite</strong>. GitHub Actions performs the collection work server-side. During publication, a static export generates the pages and data files that GitHub Pages serves to visitors.</p>
+            <div class="code-block"><div class="code-header"><span class="code-language">Architecture</span><span class="code-file">Public-data delivery</span></div><pre><code>Câmara · Senado · CGU · IBGE · BCB
+                 ↓
+     GitHub Actions collectors
+                 ↓
+     Prisma + SQLite checkpoints
+                 ↓
+       validated snapshot
+                 ↓
+       Next.js static export
+                 ↓
+            GitHub Pages</code></pre></div>
+            <p>This approach avoids requiring every visitor to call restricted APIs or exposing a CGU API key in the browser. The site is static, but the data behind each publication is updated by a scheduled process.</p>
+          </section>
+
+          <section id="history" class="article-section">
+            <h2>4. Historical synchronization and checkpoints</h2>
+            <p>Historical coverage is requested from January 2022 onward. Collectors work in bounded windows, storing successful month checkpoints for the legislative houses and page checkpoints for amendment imports. The intention is to resume verified work instead of restarting every historical request on each run.</p>
+            <div class="code-block"><div class="code-header"><span class="code-language">Example key</span><span class="code-file">SyncExecution</span></div><pre><code>history:v1:camara:2022-01
+history:v1:senado:2022-01
+history:v1:emendas:2022:page:00001</code></pre></div>
+            <p>Source-specific identifiers and idempotent database operations help avoid duplicate records. Snapshots of the SQLite database are validated and retained as recovery points. A failed API request should not be mistaken for a successfully completed month.</p>
+          </section>
+
+          <section id="interface" class="article-section">
+            <h2>5. Public-facing analysis</h2>
+            <h3>Legislative records</h3><p>Parliamentarian profiles and proposal pages bring together the voting and participation records the collectors actually obtained. Voting results are distinguished from nominal roll-call information: symbolic votes often do not expose an individual choice for every member.</p>
+            <h3>The Brazil map</h3><p>An interactive state map compares economic activity, population, geographically identifiable amendments and selected Banco Central credit series. The interface displays each source's reference period and indicates when a value is unavailable.</p>
+            <h3>Coverage report</h3><p>A separate coverage page exposes the database's known gaps, imported months and unmatched records. It is designed to communicate the limits of the collection rather than suggesting a false impression of completeness.</p>
+          </section>
+
+          <section id="limits" class="article-section">
+            <h2>6. What this project cannot claim</h2>
+            <div class="challenge-box"><h4>Some official votes are not individual records</h4><p>Symbolic, secret and other voting modalities may lack nominal data. A result being known does not justify attributing a vote to each politician.</p><div class="solution"><strong>Rule:</strong> Publish aggregate results when provided and preserve the distinction between official counts and identifiable individual votes.</div></div>
+            <div class="challenge-box"><h4>Identity matching is imperfect</h4><p>Names in amendment sources do not always map neatly onto a person who served in Congress. Collective authorship requires additional care.</p><div class="solution"><strong>Rule:</strong> Preserve the original author field and leave associations blank when identity cannot be verified.</div></div>
+            <div class="challenge-box"><h4>Historical coverage is in progress</h4><p>A clean rebuild and backfill is underway. The public site may temporarily be unavailable or have incomplete years. The planned TSE patrimonial integration is not yet a validated source of published data in the application.</p><div class="solution"><strong>Rule:</strong> No invented figures and no claim of 100% historical coverage. The underlying collection and publishing process must pass integrity checks before production is updated.</div></div>
+          </section>
+
+          <section id="design" class="article-section">
+            <h2>7. Open source, visual identity and next steps</h2>
+            <p>The scrapbook-like composition uses scanned-paper textures, worn stamps, chains, red warnings and acidic accents to make official records feel like something citizens can question rather than a government press release.</p>
+            <p>Technically, the next steps are increasing the coverage of official endpoints, measuring completeness rather than merely row counts, and improving verification of links between votes, propositions and people. The repository is public so the methodology can be inspected and challenged.</p>
+          </section>
+          <section class="article-section references" id="resources">
+            <h2>Project resources &amp; references</h2>
+            <ol class="reference-list">
+              <li><cite>Open RUÍDO project.</cite> <a href="https://leomoreiraa.github.io/radar-congresso/" target="_blank" rel="noopener noreferrer">https://leomoreiraa.github.io/radar-congresso/</a></li>
+              <li><cite>RUÍDO source code.</cite> <a href="https://github.com/leomoreiraa/radar-congresso" target="_blank" rel="noopener noreferrer">https://github.com/leomoreiraa/radar-congresso</a></li>
+              <li><cite>Chamber of Deputies open data.</cite> <a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener noreferrer">https://dadosabertos.camara.leg.br/</a></li>
+              <li><cite>Senate open data.</cite> <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener noreferrer">https://legis.senado.leg.br/dadosabertos/</a></li>
+              <li><cite>Portal da Transparência.</cite> <a href="https://portaldatransparencia.gov.br/" target="_blank" rel="noopener noreferrer">https://portaldatransparencia.gov.br/</a></li>
+            </ol>
+          </section>
+          <section class="article-section project-links-section">
+            <h2>Explore the project</h2>
+            <div class="project-buttons">
+              <a href="https://leomoreiraa.github.io/radar-congresso/" target="_blank" rel="noopener noreferrer" class="btn-primary">Open RUÍDO project</a>
+              <a href="https://github.com/leomoreiraa/radar-congresso" target="_blank" rel="noopener noreferrer" class="btn-secondary">RUÍDO source code</a>
+              <a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Chamber of Deputies open data</a>
+              <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Senate open data</a>
+              <a href="https://portaldatransparencia.gov.br/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Portal da Transparência</a>
+              <a href="../index.html#articles" class="btn-secondary">More articles on DevLeo</a>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <h2>DevLeo</h2>
+            <p class="footer-tagline">
+              Full Stack Developer passionate about creating digital solutions
+              that make a difference.
+            </p>
+          </div>
+          <div class="footer-nav">
+            <h3>Navigation</h3>
+            <div class="footer-links">
+              <a href="../index.html#home">Home</a>
+              <a href="../index.html#about">About</a>
+              <a href="../index.html#projects">Projects</a>
+              <a href="../index.html#articles">Articles</a>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a
+                href="https://github.com/leomoreiraa"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/leomoreiraa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://www.instagram.com/leodev.arruda"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">2026 Leonardo Moreira. All rights reserved.</p>
+          <p class="footer-location">Sao Paulo, Brazil</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
