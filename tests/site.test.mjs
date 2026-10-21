@@ -14,7 +14,7 @@ test("all projects have unique identities, working local pages, and dated entrie
   assert.deepEqual(entries.map(p => p.id).sort(), ["luna","orbitir","ruido","uebit"]);
   assert.equal(new Set(entries.map(p => p.id)).size, entries.length);
   for (const project of entries) {
-    assert.match(project.published, /^20\\d\\d-(0[1-9]|1[0-2])$/);
+    assert.match(project.published, /^20\d\d-(0[1-9]|1[0-2])$/);
     assert.ok(existsSync(resolve(project.link)), "Missing project page: " + project.link);
     assert.ok(project.tags.length >= 3);
   }
