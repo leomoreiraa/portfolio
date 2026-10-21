@@ -25,7 +25,7 @@ test("Uebit and RUÍDO have complete magazine articles, resource links and local
     const page = read(`projects/${id}.html`);
     assert.match(page, /class="magazine-article"/);
     assert.match(page, /class="table-of-contents"/);
-    assert.match(page, /href="\.\.\/index\.html#articles"/);
+    assert.match(page, /href="\.\.\/index\.html#projects"/);
     assert.match(page, /class="project-buttons"/);
     assert.match(page, /href="https:\/\/github.com\/leomoreiraa\//);
     const targets = [...page.matchAll(/<nav class="table-of-contents"[\s\S]*?<\/nav>/g)][0]?.[0] ?? "";
@@ -40,16 +40,18 @@ test("Uebit and RUÍDO have complete magazine articles, resource links and local
   }
 });
 
-test("home and all article menus link to publications and projects", () => {
-  assert.ok(index.includes('id="articles"'));
-  assert.ok(index.includes('id="article-previews"'));
+test("all four projects are in the original programming section", () => {
+  assert.deepEqual(Array.from(projects.programming, p => p.id), ["orbitir","luna","ruido","uebit"]);
+  assert.equal(Object.keys(projects).length, 1);
+  assert.match(index, /id="carousel-programming"/);
+  assert.doesNotMatch(index, /carousel-science|carousel-references|id="articles"|href="#articles"/);
   for (const article of ["uebit", "ruido", "luna", "orbitir"]) {
     const content = read(`projects/${article}.html`);
-    assert.ok(content.includes('href="../index.html#projects"'));
-    assert.ok(content.includes('href="../index.html#articles"'));
+    for (const anchor of ["home", "about", "projects"]) {
+      assert.ok(content.includes(`href="../index.html#${anchor}"`));
+    }
+    assert.doesNotMatch(content, /href="\.\.\/index\.html#articles"/);
   }
-  assert.match(read("js/carousel.js"), /allProjects\.filter\(\(project\) => project\.featured\)/);
-  assert.equal(entries.filter(p => p.featured).length, 2);
 });
 
 test("all UI strings and project metadata exist in each supported language", () => {
@@ -67,7 +69,5 @@ test("all UI strings and project metadata exist in each supported language", () 
           `Inline and JSON translations diverge for ${code}.${project.id}.${field}`);
       }
     }
-    assert.equal(dict.nav.articles, inline.nav.articles);
-    assert.equal(dict.articles.read, inline.articles.read);
   }
 });

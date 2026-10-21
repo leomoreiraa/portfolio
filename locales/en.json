@@ -3,8 +3,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "skip": "Skip to content",
-    "articles": "Articles"
+    "skip": "Skip to content"
   },
   "home": {
     "title": "Welcome to DevLeo",
@@ -12,9 +11,9 @@
     "btn": "View Projects"
   },
   "carousel": {
-    "programming": "Software engineering",
-    "science": "Civic technology",
-    "references": "Education & web",
+    "programming": "Programming",
+    "science": "Science",
+    "references": "References",
     "empty": "No projects published yet.",
     "previous": "Previous project",
     "next": "Next project"
@@ -49,10 +48,5 @@
     "connect": "Connect",
     "copyright": "2026 Leonardo Moreira. All rights reserved.",
     "location": "Sao Paulo, Brazil"
-  },
-  "articles": {
-    "title": "Latest publications",
-    "lead": "Technical notes from ongoing projects—what I am building, why, and which limitations still matter.",
-    "read": "Read article"
   }
 }

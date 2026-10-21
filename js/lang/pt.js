@@ -3,7 +3,6 @@ const pt = {
     home: "Início",
     about: "Sobre",
     projects: "Projetos",
-    articles: "Publicações",
     skip: "Pular para o conteúdo",
   },
   home: {
@@ -13,9 +12,9 @@ const pt = {
     btn: "Ver Projetos",
   },
   carousel: {
-    programming: "Engenharia de software",
-    science: "Tecnologia cívica",
-    references: "Educação e web",
+    programming: "Programação",
+    science: "Ciência",
+    references: "Referências",
     empty: "Nenhum projeto publicado ainda.",
     previous: "Projeto anterior",
     next: "Próximo projeto",
@@ -46,11 +45,6 @@ const pt = {
       description: "Dados abertos para acompanhar o Congresso brasileiro.",
       fullDescription: "Plataforma independente de tecnologia cívica que integra APIs legislativas e econômicas oficiais, com cobertura verificável e publicação estática pelo GitHub Pages.",
     },
-  },
-  articles: {
-    title: "Publicações recentes",
-    lead: "Notas técnicas sobre projetos em desenvolvimento: o que estou criando, os motivos e as limitações de cada solução.",
-    read: "Ler artigo",
   },
   footer: {
     tagline:

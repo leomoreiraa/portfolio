@@ -17,7 +17,7 @@ Acesse `http://localhost:8000`. O site não precisa de build.
 
 - `index.html`: página inicial.
 - `projects/`: artigos dos projetos, incluindo `uebit.html` e `ruido.html`.
-- `js/projects.js`: cadastro único dos projetos, usado pelos carrosséis, cards e publicações recentes.
+- `js/projects.js`: cadastro único dos projetos, usado pelos carrosséis e cards.
 - `js/carousel.js`: montagem dos cards e navegação dos carrosséis.
 - `js/lang/`: traduções carregadas pelo site.
 - `locales/`: cópias JSON das traduções; mantenha-as sincronizadas com `js/lang/`.
@@ -34,4 +34,4 @@ Os arquivos usam UTF-8 e indentação de dois espaços, configurados em
 - [Uebit](projects/uebit.html): ferramenta educativa aberta para criar e estudar sites com drag-and-drop, Blockly e HTML/CSS/JS. [Demo](https://leomoreiraa.github.io/uebit/) · [Código](https://github.com/leomoreiraa/uebit).
 - [RUÍDO](projects/ruido.html): projeto de transparência cívica com dados da Câmara, Senado, CGU, IBGE e BCB. [Site](https://leomoreiraa.github.io/radar-congresso/) · [Código](https://github.com/leomoreiraa/radar-congresso). A sincronização histórica ainda está em andamento.
 
-A seção `#articles` lê os projetos com `featured: true`. Para publicar novos artigos, adicione a página em `projects/`, cadastre-a em `js/projects.js` e complete os textos nos três idiomas em `js/lang/` e `locales/`.
+Os quatro projetos aparecem juntos no carrossel de programação e na grade de projetos. Os artigos individuais permanecem em `projects/`.

@@ -3,7 +3,6 @@ const en = {
     home: "Home",
     about: "About",
     projects: "Projects",
-    articles: "Articles",
     skip: "Skip to content",
   },
   home: {
@@ -13,9 +12,9 @@ const en = {
     btn: "View Projects",
   },
   carousel: {
-    programming: "Software engineering",
-    science: "Civic technology",
-    references: "Education & web",
+    programming: "Programming",
+    science: "Science",
+    references: "References",
     empty: "No projects published yet.",
     previous: "Previous project",
     next: "Next project",
@@ -46,11 +45,6 @@ const en = {
       description: "Open data to inspect the work of Brazil's Congress.",
       fullDescription: "An independent civic-tech platform using official Brazilian legislative and economic APIs, transparent data coverage and static publishing on GitHub Pages.",
     },
-  },
-  articles: {
-    title: "Latest publications",
-    lead: "Technical notes from ongoing projects—what I am building, why, and which limitations still matter.",
-    read: "Read article",
   },
   footer: {
     tagline:

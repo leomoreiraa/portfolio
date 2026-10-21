@@ -3,7 +3,6 @@ const zh = {
     home: "首页",
     about: "关于",
     projects: "项目",
-    articles: "文章",
     skip: "跳转到主要内容",
   },
   home: {
@@ -13,9 +12,9 @@ const zh = {
     btn: "查看项目",
   },
   carousel: {
-    programming: "软件工程",
-    science: "公民科技",
-    references: "网页教育",
+    programming: "编程",
+    science: "科学",
+    references: "参考文献",
     empty: "暂无已发布的项目。",
     previous: "上一个项目",
     next: "下一个项目",
@@ -46,11 +45,6 @@ const zh = {
       description: "通过开放数据了解巴西国会的活动。",
       fullDescription: "独立公民科技项目，整合巴西立法与经济官方 API，公开数据覆盖范围，并通过 GitHub Pages 发布静态网站。",
     },
-  },
-  articles: {
-    title: "最新文章",
-    lead: "记录个人项目的技术实现、设计选择以及仍需解决的问题。",
-    read: "阅读文章",
   },
   footer: {
     tagline: "热衷于创建有影响力的数字解决方案的全栈开发者。",

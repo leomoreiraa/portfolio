@@ -3,8 +3,7 @@
     "home": "Início",
     "about": "Sobre",
     "projects": "Projetos",
-    "skip": "Pular para o conteúdo",
-    "articles": "Publicações"
+    "skip": "Pular para o conteúdo"
   },
   "home": {
     "title": "Bem-vindo ao DevLeo",
@@ -12,9 +11,9 @@
     "btn": "Ver Projetos"
   },
   "carousel": {
-    "programming": "Engenharia de software",
-    "science": "Tecnologia cívica",
-    "references": "Educação e web",
+    "programming": "Programação",
+    "science": "Ciência",
+    "references": "Referências",
     "empty": "Nenhum projeto publicado ainda.",
     "previous": "Projeto anterior",
     "next": "Próximo projeto"
@@ -49,10 +48,5 @@
     "connect": "Conecte-se",
     "copyright": "2026 Leonardo Moreira. Todos os direitos reservados.",
     "location": "São Paulo, Brasil"
-  },
-  "articles": {
-    "title": "Publicações recentes",
-    "lead": "Notas técnicas sobre projetos em desenvolvimento: o que estou criando, os motivos e as limitações de cada solução.",
-    "read": "Ler artigo"
   }
 }
