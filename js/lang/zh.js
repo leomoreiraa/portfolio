@@ -3,6 +3,7 @@ const zh = {
     home: "首页",
     about: "关于",
     projects: "项目",
+    articles: "文章",
     skip: "跳转到主要内容",
   },
   home: {
@@ -12,9 +13,9 @@ const zh = {
     btn: "查看项目",
   },
   carousel: {
-    programming: "编程",
-    science: "科学",
-    references: "参考文献",
+    programming: "软件工程",
+    science: "公民科技",
+    references: "网页教育",
     empty: "暂无已发布的项目。",
     previous: "上一个项目",
     next: "下一个项目",
@@ -37,12 +38,25 @@ const zh = {
       fullDescription:
         "使用 React 和 TypeScript 构建的个人财务管理应用。管理预算、跟踪支出并可视化财务状况，所有数据均存储在本地浏览器中。",
     },
+    uebit: {
+      description: "通过可视化编辑器轻松学习 HTML、CSS 和 JavaScript。",
+      fullDescription: "开源网页教学工具，结合拖放布局、Blockly 积木编程与真实源代码，并可导出独立运行的 HTML、CSS 和 JavaScript 网站。",
+    },
+    ruido: {
+      description: "通过开放数据了解巴西国会的活动。",
+      fullDescription: "独立公民科技项目，整合巴西立法与经济官方 API，公开数据覆盖范围，并通过 GitHub Pages 发布静态网站。",
+    },
+  },
+  articles: {
+    title: "最新文章",
+    lead: "记录个人项目的技术实现、设计选择以及仍需解决的问题。",
+    read: "阅读文章",
   },
   footer: {
     tagline: "热衷于创建有影响力的数字解决方案的全栈开发者。",
     navigation: "导航",
     connect: "联系",
-    copyright: "2025 Leonardo Moreira。保留所有权利。",
+    copyright: "2026 Leonardo Moreira。保留所有权利。",
     location: "巴西圣保罗",
   },
 };

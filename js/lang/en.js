@@ -3,6 +3,7 @@ const en = {
     home: "Home",
     about: "About",
     projects: "Projects",
+    articles: "Articles",
     skip: "Skip to content",
   },
   home: {
@@ -12,9 +13,9 @@ const en = {
     btn: "View Projects",
   },
   carousel: {
-    programming: "Programming",
-    science: "Science",
-    references: "References",
+    programming: "Software engineering",
+    science: "Civic technology",
+    references: "Education & web",
     empty: "No projects published yet.",
     previous: "Previous project",
     next: "Next project",
@@ -37,13 +38,26 @@ const en = {
       fullDescription:
         "A personal finance tracker built with React and TypeScript. Manage budgets, track expenses, and visualize your finances with data stored locally in your browser.",
     },
+    uebit: {
+      description: "A playful visual editor for learning HTML, CSS and JavaScript.",
+      fullDescription: "An open educational website builder that connects drag-and-drop layout and Blockly with inspectable web code and a standalone HTML/CSS/JS export.",
+    },
+    ruido: {
+      description: "Open data to inspect the work of Brazil's Congress.",
+      fullDescription: "An independent civic-tech platform using official Brazilian legislative and economic APIs, transparent data coverage and static publishing on GitHub Pages.",
+    },
+  },
+  articles: {
+    title: "Latest publications",
+    lead: "Technical notes from ongoing projects—what I am building, why, and which limitations still matter.",
+    read: "Read article",
   },
   footer: {
     tagline:
       "Full Stack Developer passionate about creating digital solutions that make a difference.",
     navigation: "Navigation",
     connect: "Connect",
-    copyright: "2025 Leonardo Moreira. All rights reserved.",
+    copyright: "2026 Leonardo Moreira. All rights reserved.",
     location: "Sao Paulo, Brazil",
   },
 };

@@ -3,6 +3,7 @@ const pt = {
     home: "Início",
     about: "Sobre",
     projects: "Projetos",
+    articles: "Publicações",
     skip: "Pular para o conteúdo",
   },
   home: {
@@ -12,9 +13,9 @@ const pt = {
     btn: "Ver Projetos",
   },
   carousel: {
-    programming: "Programação",
-    science: "Ciência",
-    references: "Referências",
+    programming: "Engenharia de software",
+    science: "Tecnologia cívica",
+    references: "Educação e web",
     empty: "Nenhum projeto publicado ainda.",
     previous: "Projeto anterior",
     next: "Próximo projeto",
@@ -37,13 +38,26 @@ const pt = {
       fullDescription:
         "Um gerenciador de finanças pessoais desenvolvido com React e TypeScript. Organize orçamentos, acompanhe despesas e visualize suas finanças com os dados armazenados localmente no navegador.",
     },
+    uebit: {
+      description: "Um editor visual para aprender HTML, CSS e JavaScript brincando.",
+      fullDescription: "Plataforma educacional aberta que conecta edição drag-and-drop e Blockly ao código web real, permitindo exportar sites com HTML, CSS e JavaScript independentes.",
+    },
+    ruido: {
+      description: "Dados abertos para acompanhar o Congresso brasileiro.",
+      fullDescription: "Plataforma independente de tecnologia cívica que integra APIs legislativas e econômicas oficiais, com cobertura verificável e publicação estática pelo GitHub Pages.",
+    },
+  },
+  articles: {
+    title: "Publicações recentes",
+    lead: "Notas técnicas sobre projetos em desenvolvimento: o que estou criando, os motivos e as limitações de cada solução.",
+    read: "Ler artigo",
   },
   footer: {
     tagline:
       "Desenvolvedor Full Stack apaixonado por criar soluções digitais que fazem a diferença.",
     navigation: "Navegação",
     connect: "Conecte-se",
-    copyright: "2025 Leonardo Moreira. Todos os direitos reservados.",
+    copyright: "2026 Leonardo Moreira. Todos os direitos reservados.",
     location: "São Paulo, Brasil",
   },
 };
