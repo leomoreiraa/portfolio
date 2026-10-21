@@ -1,0 +1,27 @@
+name: Validar portfólio e publicações
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar sintaxe JavaScript
+        run: |
+          for f in js/*.js js/lang/*.js; do
+            node --check "$f"
+          done
+      - name: Verificar publicações, links, sumários e traduções
+        run: node --test tests/site.test.mjs
