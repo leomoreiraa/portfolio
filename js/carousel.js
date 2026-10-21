@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const allProjects = Object.values(projects).flat();
+  const allProjects = Object.values(projects).flat().sort((a, b) =>
+    b.published.localeCompare(a.published));
 
   function translatedElement(tag, key) {
     const element = document.createElement(tag);
@@ -74,6 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
       empty.className = "no-projects";
       projectsGrid.replaceChildren(empty);
     }
+  }
+
+  // Editorial highlights use the same project registry as the other cards.
+  const articlesElement = document.getElementById("article-previews");
+  if (articlesElement) {
+    const featured = allProjects.filter((project) => project.featured);
+    const previews = featured.map((project) => {
+      const card = document.createElement("a");
+      card.className = "article-preview";
+      card.href = project.link;
+      const body = document.createElement("div");
+      body.className = "article-preview-body";
+      const label = document.createElement("span");
+      label.className = "article-preview-kicker";
+      label.textContent = project.tags.slice(0, 2).join(" / ");
+      const title = document.createElement("h3");
+      title.textContent = project.title;
+      const description = translatedElement("p", `projects.${project.id}.fullDescription`);
+      const read = translatedElement("span", "articles.read");
+      read.className = "article-preview-read";
+      body.append(label, title, description, read);
+      card.append(body);
+      return card;
+    });
+    articlesElement.replaceChildren(...previews);
   }
 
   const carouselData = { ...projects, all: allProjects };

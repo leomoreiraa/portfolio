@@ -981,3 +981,30 @@ body {
     transition: none !important;
   }
 }
+
+/* ========== MAGAZINE PUBLICATIONS ========== */
+.project-image.uebit-theme { background: linear-gradient(145deg, #386d51, #76a78c); }
+.project-image.ruido-theme { background: linear-gradient(145deg, #1d2522 20%, #a31e29); }
+.articles-section { padding: 80px 60px 100px; background-color: #f7f2ef; }
+.articles-container { max-width: 1200px; margin: 0 auto; }
+.articles-lead { max-width: 670px; margin: -10px auto 35px; text-align: center; color: #555; font-size: 15px; line-height: 1.7; }
+.article-previews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.article-preview { display: block; color: inherit; background: #fff; border: 1px solid rgba(85,107,47,.18); border-left: 4px solid #556b2f; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,.035); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.article-preview:hover, .article-preview:focus-visible { transform: translateY(-4px); border-left-color: #8b4513; box-shadow: 0 12px 26px rgba(0,0,0,.075); }
+.article-preview-body { padding: 30px; }
+.article-preview-kicker { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #556b2f; }
+.article-preview h3 { margin: 12px 0; color: #252525; font-family: "Playfair Display",serif; font-size: 30px; }
+.article-preview p { color: #555; font-size: 14px; line-height: 1.7; }
+.article-preview-read { display: inline-block; color: #556b2f; font-size: 12px; font-weight: 700; border-bottom: 1px solid currentColor; margin-top: 22px; }
+@media (max-width: 768px) {
+  .articles-section { padding: 60px 20px 70px; }
+  .article-previews { grid-template-columns: 1fr; gap: 18px; }
+  .article-preview-body { padding: 24px; }
+  .menu { gap: 8px; }
+  .menu nav { gap: 12px; }
+}
+@media (max-width: 480px) {
+  .articles-section { padding: 50px 15px 55px; }
+  .article-preview h3 { font-size: 25px; }
+  .menu nav { gap: 10px; }
+}
